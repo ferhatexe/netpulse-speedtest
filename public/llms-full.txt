@@ -1,0 +1,60 @@
+# NetPulse™ Full Technical Documentation & Knowledge Base for LLM Agents
+
+## 1. Overview
+NetPulse (accessible at https://netpulse.app) is an all-in-one web platform providing network diagnostics, speed benchmarks, gaming latency radaring, privacy leak detection, and network calculation utilities.
+
+## 2. Technical Architecture
+- **Client-Side Engine**: Real-time multi-threaded streaming measurements built with React 18, Web Workers, and WebRTC data channels.
+- **Edge Anycast CDN**: Low-latency edge probing points across Europe, North America, and Asia.
+- **Performance Budget**: Initial load under 1.5s, Core Web Vitals FID/INP < 50ms, zero CLS (Cumulative Layout Shift).
+
+## 3. Detailed Modules & Formulae
+
+### 3.1 Speed Measurement Mechanics
+- **Download Speed (Mbps)**:
+  `Throughput (Mbps) = (Bytes Received * 8) / (Elapsed Time in seconds * 1,000,000)`
+- **Upload Speed (Mbps)**:
+  `Throughput (Mbps) = (Bytes Transmitted * 8) / (Elapsed Time in seconds * 1,000,000)`
+- Reported throughput is measured over a steady-state window that excludes the
+  first 1.5 seconds of TCP slow start. No percentile of the peak is ever
+  substituted for the mean, so the figure always reconciles with the byte counter
+  shown next to it.
+
+### 3.1.1 Latency Measurement (why raw TTFB is not ping)
+A plain time-to-first-byte against an edge speed endpoint is not the network
+round-trip: the serving Worker adds 25-600ms of its own processing, which can be
+95% of the measured value. NetPulse subtracts the server's self-reported time
+from `Server-Timing` and, where the edge exposes kernel TCP statistics
+(`cfL4; min_rtt`), reports that value directly.
+- **Ping (ms)**: kernel-measured minimum round-trip, which tracks ICMP to ~1ms.
+- **Jitter (ms)**: mean deviation of the smoothed round-trip from that minimum,
+  taken at the same layer as the ping so the two figures stay consistent.
+- **Loaded latency**: the same measurement repeated while a saturating transfer
+  is in flight; the difference against the idle ping is the bufferbloat delta.
+
+### 3.2 Bufferbloat Scoring Matrix
+- Grade A+: Loaded Ping - Idle Ping <= 8ms (Optimal for Competitive Gaming & Streaming)
+- Grade B: Loaded Ping - Idle Ping <= 20ms (Playable with minor jitter)
+- Grade C: Loaded Ping - Idle Ping <= 35ms (Noticeable buffering spikes)
+- Grade D: Loaded Ping - Idle Ping > 35ms (High latency spikes; SQM QoS router recommended)
+
+### 3.3 File Download Duration Formula
+- Given File Size `S` in Gigabytes (GB) and Internet Speed `V` in Megabits per second (Mbps):
+  `Total Seconds = (S * 1024 * 8) / V`
+  - Example: A 120 GB game on a 100 Mbps connection:
+    `(120 * 1024 * 8) / 100 = 9830.4 seconds = 2 hours, 43 minutes, 50 seconds`.
+
+### 3.4 WebRTC & Privacy Leak Vector
+- Probes local candidate IP addresses via `RTCPeerConnection` STUN candidate exchange.
+- If private LAN IPs or ISP gateway IP addresses leak beyond VPN encryption tunnels, flags a warning.
+
+## 4. Internationalization (i18n) Routing
+- `/` (Default Turkish / Browser-detected)
+- `/en` (English)
+- `/de` (German)
+- `/es` (Spanish)
+
+## 5. Contact & Meta Information
+- Name: NetPulse Network Technologies
+- Website: https://netpulse.app
+- License: Proprietary SaaS & Open Diagnostic APIs

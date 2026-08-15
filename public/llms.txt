@@ -1,0 +1,28 @@
+# NetPulse™ — All-in-One Network Command Station & Speedtest Suite
+
+> NetPulse is a high-precision, client-side & edge-powered web application for measuring internet performance, loaded latency (Bufferbloat), gaming server ping, WebRTC/DNS privacy leaks, and file download durations.
+
+## Core Capabilities & Endpoints
+
+- **Multi-Stream Speed Test**: Measures real-time Download (Mbps), Upload (Mbps), Ping (ms), and Jitter (ms) using low-overhead edge chunk streaming.
+- **Bufferbloat & Loaded Latency Benchmark**: Evaluates connection latency under heavy traffic. Calculates delta between idle latency and loaded latency with letter grades (A+, A, B, C, D).
+- **Live Gaming Ping Radar**: Live round-trip measurement against region-pinned endpoints near the major competitive game regions:
+  - Valorant (Istanbul TR, Frankfurt EU)
+  - Counter-Strike 2 (Zurich)
+  - League of Legends (EUW, TR)
+  - Fortnite (Paris)
+  - Apex Legends (London UK)
+- **WebRTC & DNS Leak Detective**: Probes local candidate IP leaks and DNS resolution integrity to determine privacy exposure.
+- **File Download Time Calculator**: Mathematical converter: `Time = (File Size in GB * 1024 * 8) / (Speed in Mbps)`.
+- **4K / 8K Streaming Readiness**: Benchmarks bitrate sufficiency for YouTube 4K 60fps (25 Mbps), 8K HDR (80 Mbps), Twitch 1080p60 (15 Mbps), and Cloud Gaming (45 Mbps).
+- **Speed Unit Converter**: Provides bi-directional conversion between Mbps (Megabits per second), MB/s (MegaBytes per second), Gbps, and KB/s (8 Mbps = 1 MB/s).
+
+## Language Support & Localized Pages
+
+- Turkish: `https://netpulse.app/`
+- English: `https://netpulse.app/en`
+- German: `https://netpulse.app/de`
+- Spanish: `https://netpulse.app/es`
+
+## For Full Documentation
+See `/llms-full.txt` for comprehensive technical specs, mathematical formulas, and network diagnostic definitions.

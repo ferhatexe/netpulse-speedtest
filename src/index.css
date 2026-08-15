@@ -1,0 +1,480 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-canvas: #F6F6F2;
+  --bg-card: #FFFFFF;
+  --bg-card-subtle: #F0F1EA;
+  --bg-dark-card: #121316;
+  --bg-dark-card-hover: #191B20;
+  
+  --carbon: #121316;
+  --carbon-muted: #5C6068;
+  --carbon-border: rgba(18, 19, 22, 0.08);
+  --carbon-border-hover: rgba(18, 19, 22, 0.16);
+  
+  --accent-lime: #74DB00;
+  --accent-lime-light: #88E724;
+  --accent-lime-dim: rgba(116, 219, 0, 0.12);
+  --accent-lime-glow: rgba(136, 231, 36, 0.35);
+
+  --accent-amber: #FFB800;
+  --accent-cyan: #00D4FF;
+  --accent-rose: #FF3B30;
+  --accent-emerald: #10B981;
+  
+  --mouse-x: 50vw;
+  --mouse-y: 50vh;
+}
+
+html {
+  background-color: #F6F6F2;
+  color: #121316;
+  scroll-behavior: smooth;
+}
+
+/* Decorative fixed layers (cursor glow, particle canvas) are wider than the
+   viewport by design; clamp them here rather than on <html>, which would make
+   <html> its own scroll container and throw off the page height. */
+body {
+  overflow-x: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Consent banner surface — deliberately the same dark bar in both themes.
+   A floating dark snackbar reads clearly over the light page and over the dark
+   one, and more importantly it removes a whole failure mode: theme-dependent
+   rules on this element did not repaint reliably (the browser kept the surface
+   it painted on first render even after `html.dark` changed), so the banner
+   could end up dark-on-dark or white-on-white. One fixed surface cannot drift.
+   Text colours are fixed to match, not left to `dark:` variants. */
+.consent-surface {
+  background-color: rgba(18, 19, 22, 0.97);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.consent-title {
+  color: #ffffff;
+}
+
+.consent-body {
+  color: #cfd3d9;
+}
+
+.consent-reject {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+}
+
+.consent-reject:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Height of the fixed mobile bottom nav, reserved as page padding so the footer
+   is never hidden underneath it. Cleared at lg where the bar is not rendered. */
+:root {
+  --bottom-nav-clearance: calc(76px + env(safe-area-inset-bottom, 0px));
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --bottom-nav-clearance: 0px;
+  }
+}
+
+html.dark,
+html.dark body,
+html.dark #root,
+html.dark main {
+  background-color: #0D0E12 !important;
+  background: #0D0E12 !important;
+  color: #F6F6F2 !important;
+  color-scheme: dark;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #F6F6F2;
+  color: #121316;
+  overflow-x: hidden;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+html.dark body {
+  background-color: #0D0E12 !important;
+  color: #F6F6F2 !important;
+}
+
+#root {
+  min-height: 100vh;
+  background-color: transparent;
+}
+
+* {
+  box-sizing: border-box;
+  /* Green tap highlight on mobile instead of grey */
+  -webkit-tap-highlight-color: rgba(136, 231, 36, 0.18);
+}
+
+/* Ripple effect on tap — add class="ripple" to any interactive element */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(136, 231, 36, 0.35) 0%, transparent 70%);
+  opacity: 0;
+  transform: scale(0);
+  border-radius: inherit;
+  pointer-events: none;
+  transition: none;
+}
+
+.ripple:active::after {
+  opacity: 1;
+  transform: scale(2.5);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+}
+
+/* scaleY rather than height: stays on the compositor, so the bars cannot stutter
+   against the gauge repaint during a saturating transfer */
+@keyframes equalizerWave {
+  from {
+    transform: scaleY(0.22);
+    opacity: 0.45;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+.animate-equalizer-1,
+.animate-equalizer-2,
+.animate-equalizer-3,
+.animate-equalizer-4,
+.animate-equalizer-5,
+.animate-equalizer-6,
+.animate-equalizer-7 {
+  height: 100%;
+  transform-origin: center;
+  will-change: transform;
+  /* Duration is supplied inline from the live speed reading */
+  animation: equalizerWave 0.62s ease-in-out infinite alternate;
+}
+
+/* Symmetric offsets so the wave peaks at the centre bar and mirrors outward.
+   Expressed as a fraction of the cycle so the phase relationship holds at every
+   speed — a fixed offset in seconds would collapse the wave when the cycle
+   shortens under load. */
+.animate-equalizer-1 { animation-delay: calc(var(--eq-cycle, 0.62s) * -0.48); }
+.animate-equalizer-2 { animation-delay: calc(var(--eq-cycle, 0.62s) * -0.32); }
+.animate-equalizer-3 { animation-delay: calc(var(--eq-cycle, 0.62s) * -0.16); }
+.animate-equalizer-4 { animation-delay: 0s; }
+.animate-equalizer-5 { animation-delay: calc(var(--eq-cycle, 0.62s) * -0.16); }
+.animate-equalizer-6 { animation-delay: calc(var(--eq-cycle, 0.62s) * -0.32); }
+.animate-equalizer-7 { animation-delay: calc(var(--eq-cycle, 0.62s) * -0.48); }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-equalizer-1,
+  .animate-equalizer-2,
+  .animate-equalizer-3,
+  .animate-equalizer-4,
+  .animate-equalizer-5,
+  .animate-equalizer-6,
+  .animate-equalizer-7 {
+    animation: none;
+    transform: scaleY(0.6);
+  }
+}
+
+
+html {
+  background-color: #F6F6F2;
+  color: #121316;
+  scroll-behavior: smooth;
+}
+
+html.dark {
+  background-color: #0D0E12 !important;
+  color: #F6F6F2 !important;
+  color-scheme: dark;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #F6F6F2;
+  color: #121316;
+  overflow-x: hidden;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+html.dark body {
+  background-color: #0D0E12 !important;
+  color: #F6F6F2 !important;
+}
+
+#root {
+  min-height: 100vh;
+  background-color: transparent;
+}
+
+.font-mono-code {
+  font-family: 'Space Grotesk', monospace;
+}
+
+/* Mouse Spotlight Global Background Glow */
+/* A fixed-size glow moved by transform.
+   Painting the gradient at a variable position instead (background-position or
+   `radial-gradient(... at var(--mouse-x) ...)` on a viewport-sized layer) forces
+   a full repaint on every mouse move; partial invalidation then leaves the
+   rectangular bands that trail the cursor. transform stays on the compositor, so
+   nothing repaints. The box is also sized in px rather than 100vw, which would
+   otherwise overflow under the scrollbar. */
+.mouse-glow-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1400px;
+  height: 1400px;
+  margin: -700px 0 0 -700px;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(
+    closest-side circle,
+    rgba(136, 231, 36, 0.11),
+    rgba(255, 184, 0, 0.04) 45%,
+    transparent 80%
+  );
+  transform: translate3d(var(--mouse-x, 50vw), var(--mouse-y, 50vh), 0);
+  will-change: transform;
+  contain: strict;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mouse-glow-canvas {
+    display: none;
+  }
+}
+
+/* Bento Card Styles & Interactive Mouse Glow */
+.bento-card {
+  position: relative;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(18, 19, 22, 0.08);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease,
+              background-color 0.25s ease;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
+}
+
+.bento-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(18, 19, 22, 0.18);
+  box-shadow: 0 16px 36px -4px rgba(0, 0, 0, 0.07), 0 6px 16px -2px rgba(0, 0, 0, 0.04);
+}
+
+/* Dark Theme Bento Cards */
+html.dark .bento-card {
+  background-color: #121316;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 16px 40px -8px rgba(0, 0, 0, 0.4);
+}
+
+html.dark .bento-card:hover {
+  border-color: rgba(136, 231, 36, 0.35);
+  box-shadow: 0 20px 48px -6px rgba(0, 0, 0, 0.5), 0 0 20px 0 rgba(136, 231, 36, 0.12);
+}
+
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4,
+html.dark h5,
+html.dark h6 {
+  color: #FFFFFF !important;
+}
+
+html.dark .bento-card-dark {
+  background-color: #121316;
+}
+
+/* Spotlight Card Inner Glow Layer */
+.bento-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    420px circle at calc(var(--mouse-x, 0px) - var(--card-left, 0px)) calc(var(--mouse-y, 0px) - var(--card-top, 0px)),
+    rgba(136, 231, 36, 0.14),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bento-card:hover::before {
+  opacity: 1;
+}
+
+/* Dark Bento Card (Hero & Focus Cards) */
+.bento-card-dark {
+  background-color: #121316;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  box-shadow: 0 16px 40px -8px rgba(0, 0, 0, 0.25);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease;
+}
+
+.bento-card-dark:hover {
+  border-color: rgba(136, 231, 36, 0.4);
+  box-shadow: 0 24px 54px -6px rgba(0, 0, 0, 0.4), 0 0 28px 0 rgba(136, 231, 36, 0.18);
+}
+
+.bento-card-dark::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    460px circle at calc(var(--mouse-x, 0px) - var(--card-left, 0px)) calc(var(--mouse-y, 0px) - var(--card-top, 0px)),
+    rgba(136, 231, 36, 0.22),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bento-card-dark:hover::before {
+  opacity: 1;
+}
+
+/* Tactile Spring Buttons */
+.btn-tactile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  border-radius: 9999px;
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.2s ease;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-tactile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(136, 231, 36, 0.3) 0%, transparent 70%);
+  opacity: 0;
+  transform: scale(0);
+  border-radius: inherit;
+  pointer-events: none;
+  transition: none;
+}
+
+.btn-tactile:active::after {
+  opacity: 1;
+  transform: scale(2.5);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.btn-tactile:hover {
+  transform: translateY(-1px) scale(1.02);
+}
+
+.btn-tactile:active {
+  transform: translateY(1px) scale(0.97);
+}
+
+/* Brand Lime Button */
+.btn-lime {
+  background-color: #74DB00;
+  color: #121316;
+  border: none;
+  box-shadow: 0 4px 16px rgba(116, 219, 0, 0.3);
+}
+
+.btn-lime:hover {
+  background-color: #88E724;
+  box-shadow: 0 6px 24px rgba(136, 231, 36, 0.45);
+}
+
+/* Custom Range Slider Styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+  background: #E5E6DE;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #88E724;
+  border: 3px solid #121316;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.15s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* Badge styles */
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}

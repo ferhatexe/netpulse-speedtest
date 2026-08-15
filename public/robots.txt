@@ -1,0 +1,31 @@
+# NetPulse Robots.txt
+# https://netpulse.app/
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /private/
+
+# AI Search & LLM Crawlers
+User-agent: GPTBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: PerplexityBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: Google-Extended
+Allow: /
+
+# Sitemaps
+Sitemap: https://netpulse.app/sitemap-index.xml
+Sitemap: https://netpulse.app/sitemap.xml
+Sitemap: https://netpulse.app/sitemap-image.xml

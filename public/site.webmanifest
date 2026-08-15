@@ -1,0 +1,29 @@
+{
+  "name": "NetPulse™ — Hepsi Bir Arada Ağ İstasyonu & Hız Testi",
+  "short_name": "NetPulse",
+  "description": "Ultra hızlı internet hız testi, oyun ping radarı, bufferbloat analizi ve ağ araçları.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F6F6F2",
+  "theme_color": "#121316",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "categories": [
+    "utilities",
+    "productivity",
+    "tools"
+  ]
+}
