@@ -16,7 +16,7 @@ import SeoMetaHandler from './components/SeoMetaHandler';
 import ShareCardModal from './components/ShareCardModal';
 import LocationMap from './components/LocationMap';
 import CookieConsent, { hasAnalyticsConsent } from './components/CookieConsent';
-import { loadAnalytics, trackPageView } from './utils/analytics';
+import { initAnalytics, trackPageView } from './utils/analytics';
 import Footer from './components/Footer';
 
 import { translations } from './i18n/translations';
@@ -114,12 +114,11 @@ export default function App() {
     return () => clearTimeout(id);
   }, [currentPageKey]);
 
-  // Returning visitors who already accepted; first-time consent is handled by
-  // the banner itself. Route changes are reported because this is a SPA and
-  // gtag only sees the initial document.
+  // The tag loads on every visit but starts with storage denied, so nothing is
+  // written until the banner is answered. Route changes are reported explicitly
+  // because gtag only observes the initial document in a SPA.
   useEffect(() => {
-    if (!hasAnalyticsConsent()) return;
-    loadAnalytics();
+    initAnalytics(hasAnalyticsConsent());
     trackPageView(location.pathname);
   }, [location.pathname]);
 

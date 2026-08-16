@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Cookie, Check, X } from 'lucide-react';
-import { loadAnalytics } from '../utils/analytics';
+import { grantAnalyticsConsent, denyAnalyticsConsent } from '../utils/analytics';
 
 const STORAGE_KEY = 'netmeter_cookie_consent';
 
@@ -42,9 +42,10 @@ export default function CookieConsent({ t }) {
     try {
       localStorage.setItem(STORAGE_KEY, value);
     } catch {}
-    // Start analytics straight away on accept rather than waiting for a reload;
-    // declining leaves it unloaded for the rest of the session.
-    if (value === 'accepted') loadAnalytics();
+    // Flip Consent Mode immediately rather than waiting for a reload. Declining
+    // is sent explicitly so the denial is recorded, not merely assumed.
+    if (value === 'accepted') grantAnalyticsConsent();
+    else denyAnalyticsConsent();
     setVisible(false);
   };
 
