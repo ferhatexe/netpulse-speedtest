@@ -90,27 +90,12 @@
     <meta name="twitter:description" content="İndirme hızınız ne kadar? NetPulse internet hız testi ile hızınızı saniyeler içinde ölçün." />
     <meta name="twitter:image" content="https://netpulse.app/og-preview.png" />
 
-    <!-- Google Fonts: Plus Jakarta Sans & Space Grotesk.
-         Weights match what the markup actually uses: 400/500/600/700/800/900.
-         900 was missing while `font-black` appears 33 times, so the browser was
-         synthesising it; 300 and both italics were loaded and never used.
-         Fetched with media="print" then flipped to "all" on load, so the
-         stylesheet does not block first render — display=swap already paints
-         text in the fallback face meanwhile. -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-      media="print"
-      onload="this.media='all'"
-    />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-      />
-    </noscript>
+    <!-- Fonts are self-hosted (see scripts/fetch-fonts.mjs). Loading them from
+         Google put four serial round trips at the head of the critical path.
+         Only the two faces the first screen actually paints are preloaded; the
+         rest arrive with the stylesheet. -->
+    <link rel="preload" href="/fonts/plus-jakarta-sans-800-latin-ext.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/plus-jakarta-sans-700-latin-ext.woff2" as="font" type="font/woff2" crossorigin />
 
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
