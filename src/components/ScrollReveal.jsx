@@ -43,17 +43,21 @@ export default function ScrollReveal({
       return;
     }
 
-    // Already in view on first paint — show it now rather than animating it in
-    const rect = node.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
-      setImmediate(true);
-      setRevealed(true);
-      return;
-    }
-
+    // IntersectionObserver always delivers one callback describing the current
+    // position, so the first report tells us whether this block started on
+    // screen. Reading getBoundingClientRect() here instead forced a synchronous
+    // layout per wrapper on mount, which Lighthouse flagged as forced reflow.
+    let first = true;
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
+        const visible = entries.some((e) => e.isIntersecting);
+        if (first) {
+          first = false;
+          // Above the fold at load: show it at once. Fading in content that is
+          // already on screen only delays LCP.
+          if (visible) setImmediate(true);
+        }
+        if (visible) {
           setRevealed(true);
           observer.disconnect();
         }

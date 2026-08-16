@@ -35,12 +35,30 @@ await build({
 const { render } = await import(`../${SSR_OUT}/entry-server.js`);
 
 // 2. The client build's index.html is the shell every route reuses
-const template = readFileSync(join(DIST, 'index.html'), 'utf8');
+let template = readFileSync(join(DIST, 'index.html'), 'utf8');
 const ROOT_MARKER = '<div id="root"></div>';
 
 if (!template.includes(ROOT_MARKER)) {
   console.error('prerender: could not find the root container in dist/index.html');
   process.exit(1);
+}
+
+/**
+ * Inline the stylesheet.
+ *
+ * The <link rel="stylesheet"> blocks first paint on a round trip of its own,
+ * which is pure latency on top of an HTML document that already contains the
+ * finished markup. The bundle is small enough (~9KB brotli) that carrying it in
+ * the document is cheaper than fetching it, and it takes the only remaining
+ * render-blocking request off the critical path.
+ */
+const cssLink = template.match(/<link[^>]+rel="stylesheet"[^>]+href="(\/assets\/[^"]+\.css)"[^>]*>/);
+if (cssLink) {
+  const css = readFileSync(join(DIST, cssLink[1]), 'utf8');
+  template = template.replace(cssLink[0], `<style>${css}</style>`);
+  console.log(`prerender: inlined ${(css.length / 1024).toFixed(1)}KB of CSS`);
+} else {
+  console.warn('prerender: no stylesheet link found — CSS left as a blocking request');
 }
 
 const routes = [];

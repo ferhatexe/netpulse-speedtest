@@ -1,28 +1,45 @@
-# NetPulse™ — All-in-One Network Command Station & Speedtest Suite
+# NetPulse
 
-> NetPulse is a high-precision, client-side & edge-powered web application for measuring internet performance, loaded latency (Bufferbloat), gaming server ping, WebRTC/DNS privacy leaks, and file download durations.
+> Browser-based network measurement: download, upload, ping, jitter and
+> bufferbloat, plus gaming-region latency, WebRTC/DNS leak exposure and
+> streaming readiness. Localised into 13 languages. No account, no install.
 
-## Core Capabilities & Endpoints
+Latency is not reported as raw time-to-first-byte. The edge endpoint's own
+processing time is subtracted using the `Server-Timing` response header, and
+where the edge exposes kernel TCP statistics that round-trip is reported
+directly — it tracks ICMP to within about a millisecond. Throughput is bytes
+divided by elapsed time over a steady-state window that excludes TCP slow
+start; no percentile of the peak is ever substituted for the mean, so every
+figure reconciles with the byte counter shown beside it.
 
-- **Multi-Stream Speed Test**: Measures real-time Download (Mbps), Upload (Mbps), Ping (ms), and Jitter (ms) using low-overhead edge chunk streaming.
-- **Bufferbloat & Loaded Latency Benchmark**: Evaluates connection latency under heavy traffic. Calculates delta between idle latency and loaded latency with letter grades (A+, A, B, C, D).
-- **Live Gaming Ping Radar**: Live round-trip measurement against region-pinned endpoints near the major competitive game regions:
-  - Valorant (Istanbul TR, Frankfurt EU)
-  - Counter-Strike 2 (Zurich)
-  - League of Legends (EUW, TR)
-  - Fortnite (Paris)
-  - Apex Legends (London UK)
-- **WebRTC & DNS Leak Detective**: Probes local candidate IP leaks and DNS resolution integrity to determine privacy exposure.
-- **File Download Time Calculator**: Mathematical converter: `Time = (File Size in GB * 1024 * 8) / (Speed in Mbps)`.
-- **4K / 8K Streaming Readiness**: Benchmarks bitrate sufficiency for YouTube 4K 60fps (25 Mbps), 8K HDR (80 Mbps), Twitch 1080p60 (15 Mbps), and Cloud Gaming (45 Mbps).
-- **Speed Unit Converter**: Provides bi-directional conversion between Mbps (Megabits per second), MB/s (MegaBytes per second), Gbps, and KB/s (8 Mbps = 1 MB/s).
+Links below are relative, so they resolve against whichever origin serves this
+file.
 
-## Language Support & Localized Pages
+## Tools
 
-- Turkish: `https://netpulse.app/`
-- English: `https://netpulse.app/en`
-- German: `https://netpulse.app/de`
-- Spanish: `https://netpulse.app/es`
+- [Speed and bufferbloat test](/tr/hiz-testi): Download, upload, ping, jitter, and latency measured again under load to grade bufferbloat from A+ to D.
+- [Gaming ping radar](/tr/oyun-ping-radari): Live round-trip measurement to region-pinned endpoints near the major competitive game regions.
+- [WebRTC and DNS leak detector](/tr/dns-webrtc-sizinti-testi): Checks whether the browser exposes a local address via WebRTC and whether DNS-over-HTTPS is reachable.
+- [Download time calculator](/tr/indirme-suresi-hesaplayici): Converts a file size and a line speed into a transfer duration.
+- [Guide and FAQ](/tr/rehber-ve-sss): What bufferbloat is, how to get an accurate reading, and how Mbps relates to MB/s.
 
-## For Full Documentation
-See `/llms-full.txt` for comprehensive technical specs, mathematical formulas, and network diagnostic definitions.
+## Languages
+
+- [Turkish](/): Default locale, served from the root.
+- [English](/en): English translation.
+- [German](/de): German translation.
+- [Spanish](/es): Spanish translation.
+- [French](/fr): French translation.
+- [Italian](/it): Italian translation.
+- [Portuguese](/pt): Portuguese translation.
+- [Dutch](/nl): Dutch translation.
+- [Polish](/pl): Polish translation.
+- [Russian](/ru): Russian translation.
+- [Japanese](/ja): Japanese translation.
+- [Chinese](/zh): Chinese translation.
+- [Arabic](/ar): Arabic translation, right-to-left.
+
+## Optional
+
+- [Full technical documentation](/llms-full.txt): Measurement formulae, bufferbloat grade thresholds, and the reasoning behind the latency correction.
+- [Sitemap](/sitemap.xml): Every route in every locale with reciprocal hreflang.
