@@ -15,7 +15,7 @@ services:
     envVars:
       # Feeds canonical URLs, hreflang, structured data and the share card.
       # Point both at the final domain before going live — leaving them unset
-      # makes every canonical claim netpulse.app, a site you do not control.
+      # makes every canonical claim netmeter.app, a site you do not control.
       - key: VITE_SITE_ORIGIN
         sync: false
       - key: SITE_ORIGIN

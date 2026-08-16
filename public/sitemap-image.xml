@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://netpulse.app/</loc>
+    <loc>https://netmeter.app/</loc>
     <image:image>
-      <image:loc>https://netpulse.app/og-preview.png</image:loc>
+      <image:loc>https://netmeter.app/og-preview.png</image:loc>
       <image:title>NetPulse İnternet Hız ve Ağ Performans Testi</image:title>
       <image:caption>Download, Upload, Ping, Bufferbloat ve Oyun Radarı Göstergesi</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://netpulse.app/web-app-manifest-512x512.png</image:loc>
+      <image:loc>https://netmeter.app/web-app-manifest-512x512.png</image:loc>
       <image:title>NetPulse Pro Logo Icon</image:title>
     </image:image>
   </url>

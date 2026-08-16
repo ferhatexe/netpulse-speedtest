@@ -1,7 +1,7 @@
 # NetPulse™ Full Technical Documentation & Knowledge Base for LLM Agents
 
 ## 1. Overview
-NetPulse (accessible at https://netpulse.app) is an all-in-one web platform providing network diagnostics, speed benchmarks, gaming latency radaring, privacy leak detection, and network calculation utilities.
+NetPulse (accessible at https://netmeter.app) is an all-in-one web platform providing network diagnostics, speed benchmarks, gaming latency radaring, privacy leak detection, and network calculation utilities.
 
 ## 2. Technical Architecture
 - **Client-Side Engine**: Real-time multi-threaded streaming measurements built with React 18, Web Workers, and WebRTC data channels.
@@ -56,5 +56,5 @@ from `Server-Timing` and, where the edge exposes kernel TCP statistics
 
 ## 5. Contact & Meta Information
 - Name: NetPulse Network Technologies
-- Website: https://netpulse.app
+- Website: https://netmeter.app
 - License: Proprietary SaaS & Open Diagnostic APIs

@@ -19,7 +19,7 @@ import { routeSlugs, getRoutePath, SUPPORTED_LANGS, RTL_LANGS } from '../src/i18
 import { titles, descriptions, locales } from '../src/i18n/seo.js';
 
 // Mirrors src/config/site.js; SITE_ORIGIN overrides it when the domain changes
-const ORIGIN = (process.env.SITE_ORIGIN || 'https://netpulse.app').replace(/\/+$/, '');
+const ORIGIN = (process.env.SITE_ORIGIN || 'https://netmeter.app').replace(/\/+$/, '');
 const DIST = 'dist';
 const SSR_OUT = '.ssr-tmp';
 const PAGES = ['home', 'speed', 'gaming', 'privacy', 'calculator', 'faq'];

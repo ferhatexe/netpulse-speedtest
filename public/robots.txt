@@ -1,5 +1,5 @@
 # NetPulse Robots.txt
-# https://netpulse.app/
+# https://netmeter.app/
 
 User-agent: *
 Allow: /
@@ -26,6 +26,6 @@ User-agent: Google-Extended
 Allow: /
 
 # Sitemaps
-Sitemap: https://netpulse.app/sitemap-index.xml
-Sitemap: https://netpulse.app/sitemap.xml
-Sitemap: https://netpulse.app/sitemap-image.xml
+Sitemap: https://netmeter.app/sitemap-index.xml
+Sitemap: https://netmeter.app/sitemap.xml
+Sitemap: https://netmeter.app/sitemap-image.xml

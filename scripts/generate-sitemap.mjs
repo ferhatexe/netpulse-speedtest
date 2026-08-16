@@ -12,7 +12,7 @@ import { writeFileSync } from 'node:fs';
 import { routeSlugs, getRoutePath, SUPPORTED_LANGS } from '../src/i18n/routes.js';
 
 // Mirrors src/config/site.js; override with SITE_ORIGIN when the domain changes
-const ORIGIN = (process.env.SITE_ORIGIN || 'https://netpulse.app').replace(/\/+$/, '');
+const ORIGIN = (process.env.SITE_ORIGIN || 'https://netmeter.app').replace(/\/+$/, '');
 const PAGES = ['home', 'speed', 'gaming', 'privacy', 'calculator', 'faq'];
 const PRIORITY = { home: '1.0', speed: '0.9', gaming: '0.8', privacy: '0.8', calculator: '0.7', faq: '0.7' };
 

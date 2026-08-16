@@ -9,7 +9,7 @@
  * No trailing slash.
  */
 export const SITE_ORIGIN =
-  (import.meta.env?.VITE_SITE_ORIGIN || 'https://netpulse.app').replace(/\/+$/, '');
+  (import.meta.env?.VITE_SITE_ORIGIN || 'https://netmeter.app').replace(/\/+$/, '');
 
 /** Domain without protocol — for display in the share card footer and meta copy. */
 export const SITE_DOMAIN = SITE_ORIGIN.replace(/^https?:\/\//, '');
