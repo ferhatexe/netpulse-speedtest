@@ -312,11 +312,17 @@ export default function Header({ lang, setLang, t, currentPageKey = 'home', them
               <Moon className={`w-3.5 h-3.5 transition-opacity ${theme === 'dark' ? 'opacity-0' : 'text-neutral-500 opacity-60'}`} />
             </div>
 
-            {/* Sliding Thumb Button */}
+            {/* Sliding thumb.
+                translateX is a physical transform — it does not flip under
+                dir="rtl", but the flex row it sits in does. In Arabic the thumb
+                therefore started at the right edge and the positive offset
+                pushed it straight out of the pill. The rtl: pair sends it the
+                other way; the sm: variants are repeated because the responsive
+                rule is emitted inside a media query and would otherwise win. */}
             <div
               className={`w-6 h-6 rounded-full flex items-center justify-center transition-transform duration-200 shadow-md ${
                 theme === 'dark'
-                  ? 'translate-x-6 sm:translate-x-8 bg-[#121316] text-white border border-white/20'
+                  ? 'translate-x-6 sm:translate-x-8 rtl:-translate-x-6 sm:rtl:-translate-x-8 bg-[#121316] text-white border border-white/20'
                   : 'translate-x-0 bg-white text-neutral-800 border border-black/5'
               }`}
             >
