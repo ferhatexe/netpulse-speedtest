@@ -17,6 +17,7 @@ import { dirname, join } from 'node:path';
 import { build } from 'vite';
 import { routeSlugs, getRoutePath, SUPPORTED_LANGS, RTL_LANGS } from '../src/i18n/routes.js';
 import { titles, descriptions, locales } from '../src/i18n/seo.js';
+import { translations } from '../src/i18n/translations.js';
 
 // Mirrors src/config/site.js; SITE_ORIGIN overrides it when the domain changes
 const ORIGIN = (process.env.SITE_ORIGIN || 'https://netmeter.app').replace(/\/+$/, '');
@@ -119,6 +120,53 @@ function applyHead(page, route) {
   out = out.replace(
     /(<meta name="twitter:description" content=")[^"]*(")/,
     `$1${esc(description)}$2`
+  );
+
+  // Structured data, per language.
+  //
+  // index.html carries a single hard-coded WebApplication block in Turkish, and
+  // the FAQPage was only ever added at runtime by SeoMetaHandler — so a crawler
+  // that does not execute JavaScript saw Turkish schema on every locale and no
+  // FAQ at all. FAQ rich results are exactly the kind of thing that needs to be
+  // in the served HTML.
+  //
+  // The id matches the one SeoMetaHandler looks up, so on client-side navigation
+  // it updates this same node instead of appending a second one.
+  const t = translations[lang] || translations.tr;
+  const graph = [
+    {
+      '@type': 'WebApplication',
+      name: 'NetMeter',
+      url: canonical,
+      applicationCategory: 'UtilitiesApplication',
+      operatingSystem: 'All',
+      browserRequirements: 'Requires JavaScript. Requires HTML5.',
+      inLanguage: lang,
+      description,
+      sameAs: ['https://instagram.com/netmeter.app'],
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }
+    }
+  ];
+
+  if (Array.isArray(t?.faqs) && t.faqs.length > 0) {
+    graph.push({
+      '@type': 'FAQPage',
+      inLanguage: lang,
+      mainEntity: t.faqs.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a }
+      }))
+    });
+  }
+
+  const ld = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })
+    // Keep the payload from being able to close the script element early
+    .replace(/</g, '\\u003c');
+
+  out = out.replace(
+    /<script type="application\/ld\+json">[\s\S]*?<\/script>/,
+    `<script type="application/ld+json" id="netmeter-structured-data">${ld}</script>`
   );
 
   // hreflang has to describe THIS page across locales, not always the home page
