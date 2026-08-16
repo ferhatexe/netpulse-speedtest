@@ -26,6 +26,6 @@ User-agent: Google-Extended
 Allow: /
 
 # Sitemaps
+# The index already points at sitemap.xml and sitemap-image.xml; listing the
+# children as well makes Search Console count the same URLs twice.
 Sitemap: https://netmeter.app/sitemap-index.xml
-Sitemap: https://netmeter.app/sitemap.xml
-Sitemap: https://netmeter.app/sitemap-image.xml

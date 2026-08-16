@@ -55,4 +55,22 @@ const xml = [
 ].join('\n');
 
 writeFileSync('public/sitemap.xml', xml, 'utf8');
+
+// The index is generated too. Hand-maintaining it meant its lastmod drifted
+// behind the file it points at the moment either one changed.
+const index = [
+  '<?xml version="1.0" encoding="UTF-8"?>',
+  '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+  ...['sitemap.xml', 'sitemap-image.xml'].flatMap((name) => [
+    '  <sitemap>',
+    `    <loc>${ORIGIN}/${name}</loc>`,
+    `    <lastmod>${lastmod}</lastmod>`,
+    '  </sitemap>'
+  ]),
+  '</sitemapindex>',
+  ''
+].join('\n');
+
+writeFileSync('public/sitemap-index.xml', index, 'utf8');
+
 console.log(`sitemap.xml: ${entries.length} urls across ${SUPPORTED_LANGS.length} locales`);
