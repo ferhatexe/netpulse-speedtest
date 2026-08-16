@@ -20,5 +20,12 @@ export const SITE_DOMAIN = SITE_ORIGIN.replace(/^https?:\/\//, '');
  */
 export const ANALYTICS_ID = import.meta.env?.VITE_ANALYTICS_ID || 'G-H0V5DYS9D3';
 
+/**
+ * Public contact address, routed to the owner's inbox by Cloudflare Email
+ * Routing rather than a real mailbox. Shown in the footer and published in the
+ * structured data, so a data-removal request has somewhere to go.
+ */
+export const CONTACT_EMAIL = 'info@netmeter.app';
+
 /** Absolute URL for a site-relative path. */
 export const siteUrl = (path = '/') => `${SITE_ORIGIN}${path.startsWith('/') ? path : `/${path}`}`;

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { getRoutePath, SUPPORTED_LANGS } from '../i18n/routes';
 import { titles, descriptions, locales } from '../i18n/seo';
-import { siteUrl } from '../config/site';
+import { siteUrl, CONTACT_EMAIL } from '../config/site';
 
 export default function SeoMetaHandler({ lang = 'tr', pageKey = 'home', t }) {
   const location = useLocation();
@@ -66,10 +66,18 @@ export default function SeoMetaHandler({ lang = 'tr', pageKey = 'home', t }) {
         browserRequirements: 'Requires JavaScript. Requires HTML5.',
         inLanguage: lang,
         description: currentDesc,
+        publisher: { '@id': `${siteUrl('/')}#org` },
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }
+      },
+      {
+        '@type': 'Organization',
+        '@id': `${siteUrl('/')}#org`,
+        name: 'NetMeter',
+        url: siteUrl('/'),
+        email: CONTACT_EMAIL,
         // Tells search engines the site and this profile are the same entity.
         // Only accounts that exist go here.
-        sameAs: ['https://instagram.com/netmeter.app'],
-        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }
+        sameAs: ['https://instagram.com/netmeter.app']
       }
     ];
 

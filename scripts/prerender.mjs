@@ -18,6 +18,9 @@ import { build } from 'vite';
 import { routeSlugs, getRoutePath, SUPPORTED_LANGS, RTL_LANGS } from '../src/i18n/routes.js';
 import { titles, descriptions, locales } from '../src/i18n/seo.js';
 import { translations } from '../src/i18n/translations.js';
+// Safe under plain node: site.js reads import.meta.env with optional chaining,
+// which is undefined outside Vite rather than a throw.
+import { CONTACT_EMAIL } from '../src/config/site.js';
 
 // Mirrors src/config/site.js; SITE_ORIGIN overrides it when the domain changes
 const ORIGIN = (process.env.SITE_ORIGIN || 'https://netmeter.app').replace(/\/+$/, '');
@@ -143,8 +146,16 @@ function applyHead(page, route) {
       browserRequirements: 'Requires JavaScript. Requires HTML5.',
       inLanguage: lang,
       description,
-      sameAs: ['https://instagram.com/netmeter.app'],
+      publisher: { '@id': `${ORIGIN}/#org` },
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }
+    },
+    {
+      '@type': 'Organization',
+      '@id': `${ORIGIN}/#org`,
+      name: 'NetMeter',
+      url: `${ORIGIN}/`,
+      email: CONTACT_EMAIL,
+      sameAs: ['https://instagram.com/netmeter.app']
     }
   ];
 

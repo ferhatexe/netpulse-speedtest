@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Zap } from 'lucide-react';
 import { getRoutePath } from '../i18n/routes';
 import { FlagIcon } from './FlagIcons';
+import { CONTACT_EMAIL } from '../config/site';
 
 // Custom SVG social icons — no external icon library dependency
 const IconInstagram = () => (
@@ -98,6 +99,25 @@ export default function Footer({ t, lang, setLang, currentPageKey = 'home', them
 
             <div className="flex items-center gap-2 text-[11px] text-neutral-300 dark:text-neutral-300 font-mono-code">
               <span>Edge Anycast Network · 99.99% Uptime · SSL 256-bit</span>
+            </div>
+
+            {/* The site had no contact route at all, which a privacy policy is
+                supposed to provide — someone asking to have their data removed
+                had nowhere to write. */}
+            <div className="text-xs">
+              <span className={theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'}>
+                {t?.contact || 'Contact'}:{' '}
+              </span>
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                className={`font-mono-code transition-colors ${
+                  theme === 'dark'
+                    ? 'text-neutral-200 hover:text-[#88E724]'
+                    : 'text-neutral-800 hover:text-black'
+                }`}
+              >
+                {CONTACT_EMAIL}
+              </a>
             </div>
 
             {/* Social Media Icons */}

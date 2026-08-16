@@ -83,6 +83,95 @@ export default function Header({ lang, setLang, t, currentPageKey = 'home', them
   const isActive = (key) =>
     key === 'speed' ? currentPageKey === 'speed' || currentPageKey === 'home' : currentPageKey === key;
 
+  /**
+   * Which section the reader is actually looking at.
+   *
+   * The bottom bar used to derive its highlight from the URL alone, and
+   * scrolling does not change the URL — so the green pill sat on "Hız"
+   * permanently no matter how far down the page you were.
+   *
+   * Only runs below lg, where the bottom bar exists and the cards are stacked
+   * in one column. On desktop those same sections sit side by side in a grid,
+   * so "the section you are in" has no single answer and the URL stays the
+   * better source of truth.
+   */
+  const [visibleSection, setVisibleSection] = useState(null);
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 1023px)');
+    if (!mq.matches) return;
+
+    // Only the sections the bottom bar can actually point at. #faq is
+    // deliberately absent: tracking it would leave every tab unlit once the
+    // reader reached the questions, which reads as a broken bar rather than as
+    // "you are somewhere else".
+    const els = BOTTOM_NAV.map(({ key }) => document.getElementById(key)).filter(Boolean);
+    if (els.length === 0) return;
+
+    // Measured against a strip running from just under the pinned bar down to
+    // 45% of the viewport. Deliberately not an IntersectionObserver: reading
+    // the rects here keeps the decision and the geometry in one place, and the
+    // five reads are batched into a single frame below.
+    const settle = () => {
+      const atBottom =
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+
+      // At the very bottom the footer and the FAQ have pushed every tracked
+      // section above the strip, so hold the last one instead of clearing.
+      if (atBottom) {
+        let last = null;
+        let deepest = -Infinity;
+        for (const el of els) {
+          const top = el.getBoundingClientRect().top;
+          if (top > deepest) {
+            deepest = top;
+            last = el.id;
+          }
+        }
+        if (last) setVisibleSection(last);
+        return;
+      }
+
+      const bandTop = HEADER_OFFSET;
+      const bandBottom = window.innerHeight * 0.45;
+
+      // Two sections overlap the strip mid-transition; the lower one is the one
+      // being scrolled into.
+      //
+      // Order comes off the live layout rather than the array above, because
+      // the cards do not render in source order — on mobile the calculator sits
+      // at ~1860px and privacy at ~2510px, the reverse of how they are
+      // declared. A hardcoded order would light the wrong tab.
+      let current = null;
+      let lowest = -Infinity;
+      for (const el of els) {
+        const r = el.getBoundingClientRect();
+        if (r.bottom <= bandTop || r.top >= bandBottom) continue;
+        if (r.top > lowest) {
+          lowest = r.top;
+          current = el.id;
+        }
+      }
+      if (current) setVisibleSection(current);
+    };
+
+    // Called straight from the scroll event rather than deferred to a frame.
+    // It is five rect reads with no style writes between them, so there is
+    // nothing to thrash, and setState bails out when the section has not
+    // changed — which is every scroll event but the handful that cross a
+    // boundary.
+    settle();
+    window.addEventListener('scroll', settle, { passive: true });
+    window.addEventListener('resize', settle, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', settle);
+      window.removeEventListener('resize', settle);
+    };
+  }, [location.pathname]);
+
+  // Falls back to the URL until the observer has reported, so the first paint
+  // is never left with nothing highlighted.
+  const bottomActive = (key) => (visibleSection ? visibleSection === key : isActive(key));
+
   return (
     <>
       {/* Announcement banner — deliberately OUTSIDE the sticky element so it
@@ -310,7 +399,7 @@ export default function Header({ lang, setLang, t, currentPageKey = 'home', them
       >
         <div className="grid grid-cols-4">
           {BOTTOM_NAV.map(({ key, labelKey, fallbackKey, icon: Icon }) => {
-            const active = isActive(key);
+            const active = bottomActive(key);
             return (
               <button
                 key={key}

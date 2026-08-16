@@ -198,6 +198,7 @@ export const translations = {
     
     // Footer & SEO
     footerDesc: "NetMeter, dünya standartlarında tarafsız internet performans analizleri, bufferbloat testleri ve ağ güvenliği araçları sunar.",
+    contact: "İletişim",
     rights: "Tüm Hakları Saklıdır.",
     disclaimer: "Ölçüm sonuçları anlık ağ yoğunluğuna ve sunucu konumuna göre değişkenlik gösterebilir.",
 
@@ -420,6 +421,7 @@ export const translations = {
     close: "Close",
     
     footerDesc: "NetMeter provides neutral, high-precision network diagnostics, bufferbloat benchmarks, and privacy tools.",
+    contact: "Contact",
     rights: "All Rights Reserved.",
     disclaimer: "Benchmark metrics depend on real-time routing hops, ISP peering, and server load.",
 
@@ -642,6 +644,7 @@ export const translations = {
     close: "Schließen",
     
     footerDesc: "NetMeter bietet hochpräzise Netzwerkdiagnosen, Bufferbloat-Tests und Datenschutz-Tools.",
+    contact: "Kontakt",
     rights: "Alle Rechte vorbehalten.",
     disclaimer: "Testergebnisse hängen von der Netzauslastung und Serverentfernung ab.",
     
@@ -864,6 +867,7 @@ export const translations = {
     close: "Cerrar",
     
     footerDesc: "NetMeter ofrece diagnósticos neutrales de red, pruebas de bufferbloat y herramientas de privacidad.",
+    contact: "Contacto",
     rights: "Todos los derechos reservados.",
     disclaimer: "Los resultados pueden variar según la carga de la red y la distancia al servidor.",
 
@@ -1077,6 +1081,7 @@ export const translations = {
     shareEdgeSub: "Edge Anycast Cloudflare",
     close: "Fermer",
     footerDesc: "NetMeter fournit des diagnostics réseau neutres et précis, des tests de bufferbloat et des outils de confidentialité.",
+    contact: "Contact",
     rights: "Tous droits réservés.",
     disclaimer: "Les mesures dépendent du routage en temps réel, du peering FAI et de la charge des serveurs.",
     faqBadge: "GUIDE ET BASE DE CONNAISSANCES",
@@ -1288,6 +1293,7 @@ export const translations = {
     shareEdgeSub: "Edge Anycast Cloudflare",
     close: "Chiudi",
     footerDesc: "NetMeter offre diagnostica di rete neutrale e precisa, benchmark del bufferbloat e strumenti per la privacy.",
+    contact: "Contatti",
     rights: "Tutti i diritti riservati.",
     disclaimer: "Le misurazioni dipendono dall'instradamento in tempo reale, dal peering del provider e dal carico dei server.",
     faqBadge: "GUIDA E BASE DI CONOSCENZA",
@@ -1499,6 +1505,7 @@ export const translations = {
     shareEdgeSub: "Edge Anycast da Cloudflare",
     close: "Fechar",
     footerDesc: "O NetMeter oferece diagnósticos de rede neutros e precisos, testes de bufferbloat e ferramentas de privacidade.",
+    contact: "Contacto",
     rights: "Todos os direitos reservados.",
     disclaimer: "As medições dependem do encaminhamento em tempo real, do peering do operador e da carga dos servidores.",
     faqBadge: "GUIA E BASE DE CONHECIMENTO",
@@ -1710,6 +1717,7 @@ export const translations = {
     shareEdgeSub: "Cloudflare Anycast Edge",
     close: "Sluiten",
     footerDesc: "NetMeter levert neutrale, uiterst nauwkeurige netwerkdiagnostiek, bufferbloat-tests en privacytools.",
+    contact: "Contact",
     rights: "Alle rechten voorbehouden.",
     disclaimer: "Meetresultaten hangen af van realtime routering, providerpeering en serverbelasting.",
     faqBadge: "GIDS EN KENNISBANK",
@@ -1921,6 +1929,7 @@ export const translations = {
     shareEdgeSub: "Cloudflare Anycast Edge",
     close: "Zamknij",
     footerDesc: "NetMeter zapewnia neutralną, bardzo precyzyjną diagnostykę sieci, testy bufferbloat i narzędzia prywatności.",
+    contact: "Kontakt",
     rights: "Wszelkie prawa zastrzeżone.",
     disclaimer: "Wyniki pomiarów zależą od trasowania w czasie rzeczywistym, peeringu dostawcy i obciążenia serwerów.",
     faqBadge: "PORADNIK I BAZA WIEDZY",
@@ -2132,6 +2141,7 @@ export const translations = {
     shareEdgeSub: "Cloudflare Anycast Edge",
     close: "Закрыть",
     footerDesc: "NetMeter предоставляет нейтральную высокоточную диагностику сети, тесты bufferbloat и инструменты приватности.",
+    contact: "Контакты",
     rights: "Все права защищены.",
     disclaimer: "Результаты измерений зависят от маршрутизации в реальном времени, пиринга провайдера и нагрузки серверов.",
     faqBadge: "РУКОВОДСТВО И БАЗА ЗНАНИЙ",
@@ -2343,6 +2353,7 @@ export const translations = {
     shareEdgeSub: "Cloudflare Anycast エッジ",
     close: "閉じる",
     footerDesc: "NetMeter は中立で高精度なネットワーク診断、バッファブロート測定、プライバシーツールを提供します。",
+    contact: "お問い合わせ",
     rights: "All Rights Reserved.",
     disclaimer: "測定値はリアルタイムの経路、ISP のピアリング、サーバー負荷に左右されます。",
     faqBadge: "ガイドとナレッジベース",
@@ -2554,6 +2565,7 @@ export const translations = {
     shareEdgeSub: "Cloudflare Anycast 边缘节点",
     close: "关闭",
     footerDesc: "NetMeter 提供中立、高精度的网络诊断、缓冲膨胀基准测试与隐私工具。",
+    contact: "联系我们",
     rights: "版权所有。",
     disclaimer: "测量结果取决于实时路由、运营商互联和服务器负载。",
     faqBadge: "指南与知识库",
@@ -2765,6 +2777,7 @@ export const translations = {
     shareEdgeSub: "حافة Cloudflare Anycast",
     close: "إغلاق",
     footerDesc: "يوفّر NetMeter تشخيصًا محايدًا وعالي الدقة للشبكة، واختبارات تضخّم التخزين المؤقت، وأدوات الخصوصية.",
+    contact: "اتصل بنا",
     rights: "جميع الحقوق محفوظة.",
     disclaimer: "تعتمد نتائج القياس على مسارات التوجيه اللحظية واتصال مزوّد الخدمة وحِمل الخوادم.",
     faqBadge: "الدليل وقاعدة المعرفة",

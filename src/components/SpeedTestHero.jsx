@@ -849,6 +849,26 @@ export default function SpeedTestHero({ t, onOpenShare, onSpeedUpdate }) {
         <div className="pt-4 border-t border-white/10 relative z-10 space-y-3">
           {/* Segmented track: each phase owns a slice sized to its share of the
               run, so a label always sits directly above the bar it describes */}
+          {/* Below sm the four labels share a ~340px row, so every one of them
+              hits `truncate` — "1. PİNG (GE…", "4. BUF…". One label for the
+              phase that is actually running says more than four cut-off ones.
+              Fixed height so the row does not jump when the test starts. */}
+          <div className="sm:hidden h-4">
+            {(() => {
+              const idx = PHASES.findIndex((p) => p.key === testState);
+              if (idx < 0) return null;
+              const phase = PHASES[idx];
+              return (
+                <div
+                  className="font-mono font-bold uppercase tracking-wider text-[10px] truncate"
+                  style={{ color: phase.color }}
+                >
+                  {idx + 1}. {t?.[phase.labelKey] || phase.fallback}
+                </div>
+              );
+            })()}
+          </div>
+
           <div className="flex items-end gap-3">
             <div className="flex-1 flex items-stretch gap-1.5 min-w-0">
               {PHASES.map((phase, idx) => {
@@ -860,7 +880,7 @@ export default function SpeedTestHero({ t, onOpenShare, onSpeedUpdate }) {
                 return (
                   <div key={phase.key} className="min-w-0 space-y-1.5" style={{ flexGrow: span, flexBasis: 0 }}>
                     <div
-                      className={`font-mono font-bold uppercase tracking-wider text-[9px] sm:text-[10px] truncate transition-colors duration-200 ${
+                      className={`hidden sm:block font-mono font-bold uppercase tracking-wider text-[10px] truncate transition-colors duration-200 ${
                         isActive ? 'font-black' : isDone ? 'text-neutral-400' : 'text-neutral-600'
                       }`}
                       style={isActive ? { color: phase.color } : undefined}
