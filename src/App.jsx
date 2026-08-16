@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Header from './components/Header';
 import MouseSpotlight from './components/MouseSpotlight';
 import AntiGravityCanvas from './components/AntiGravityCanvas';
@@ -19,21 +19,61 @@ import CookieConsent from './components/CookieConsent';
 import Footer from './components/Footer';
 
 import { translations } from './i18n/translations';
-import { findPageKeyFromSlug, SUPPORTED_LANGS, RTL_LANGS } from './i18n/routes';
+import { findPageKeyFromSlug, getRoutePath, SUPPORTED_LANGS, RTL_LANGS } from './i18n/routes';
+
+/** Maps a pathname onto the active locale and page key. */
+function parseLocation(pathname) {
+  const parts = pathname.replace(/^\/+|\/+$/g, '').split('/');
+
+  let lang = 'tr';
+  let slug = '';
+
+  if (parts.length > 0 && SUPPORTED_LANGS.includes(parts[0])) {
+    lang = parts[0];
+    slug = parts[1] || '';
+  } else if (parts.length > 0 && parts[0]) {
+    slug = parts[0];
+  }
+
+  return { lang, pageKey: findPageKeyFromSlug(lang, slug) };
+}
 
 export default function App() {
   const location = useLocation();
+  const navigate = useNavigate();
 
-  const [lang, setLang] = useState('tr');
-  const [currentPageKey, setCurrentPageKey] = useState('home');
+  /**
+   * Language and page are derived from the URL during render, not stored in
+   * state and filled in by an effect. Effects do not run while prerendering, so
+   * the old version emitted Turkish markup for every locale — /fr and /ja shipped
+   * a Turkish H1. The URL is the single source of truth; navigating changes it.
+   */
+  const { lang, pageKey: currentPageKey } = parseLocation(location.pathname);
   const [shareModalOpen, setShareModalOpen] = useState(false);
   const [shareMetrics, setShareMetrics] = useState(null);
   const [latestDownloadSpeed, setLatestDownloadSpeed] = useState(0);
 
-  // Theme State (Default: 'dark')
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('netpulse_theme') || 'dark';
-  });
+  /**
+   * Always starts 'dark', which is exactly what the prerendered HTML contains.
+   * Reading localStorage here instead would make the first client render differ
+   * from the server markup for anyone on the light theme, and React discards the
+   * whole prerendered tree on a hydration mismatch — throwing away the faster
+   * paint it was there to provide. The stored preference is applied on mount.
+   *
+   * There is no flash of the wrong theme: the inline script in index.html sets
+   * the `dark` class on <html> before first paint, and the CSS follows it.
+   */
+  const [theme, setTheme] = useState('dark');
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem('netpulse_theme');
+      if (stored && stored !== theme) setTheme(stored);
+    } catch {}
+    // Intentionally mount-only: this syncs the initial preference, after which
+    // toggleTheme owns the value.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (theme === 'dark') {
@@ -46,43 +86,30 @@ export default function App() {
     localStorage.setItem('netpulse_theme', theme);
   }, [theme]);
 
+  // Header/Footer call this to switch language. Navigation is the whole
+  // mechanism now — lang is read back out of the URL on the next render.
+  const setLang = (nextLang) => navigate(getRoutePath(nextLang, currentPageKey));
+
   const toggleTheme = () => {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
 
-  // Parse path to derive active language and pageKey
+  // Arabic reads right-to-left; the whole layout has to mirror, not just the text
   useEffect(() => {
-    const pathname = location.pathname.replace(/^\/+|\/+$/g, '');
-    const parts = pathname.split('/');
+    document.documentElement.dir = RTL_LANGS.includes(lang) ? 'rtl' : 'ltr';
+  }, [lang]);
 
-    let detectedLang = 'tr';
-    let slug = '';
-
-    if (parts.length > 0 && SUPPORTED_LANGS.includes(parts[0])) {
-      detectedLang = parts[0];
-      slug = parts[1] || '';
-    } else if (parts.length > 0 && parts[0]) {
-      slug = parts[0];
-    }
-
-    const pageKey = findPageKeyFromSlug(detectedLang, slug);
-
-    setLang(detectedLang);
-    setCurrentPageKey(pageKey);
-
-    // Arabic reads right-to-left; the whole layout has to mirror, not just the text
-    document.documentElement.dir = RTL_LANGS.includes(detectedLang) ? 'rtl' : 'ltr';
-
-    if (pageKey && pageKey !== 'home') {
-      setTimeout(() => {
-        const el = document.getElementById(pageKey);
-        if (el) {
-          const top = el.getBoundingClientRect().top + window.scrollY - 100;
-          window.scrollTo({ top, behavior: 'smooth' });
-        }
-      }, 100);
-    }
-  }, [location.pathname]);
+  useEffect(() => {
+    if (!currentPageKey || currentPageKey === 'home') return;
+    const id = setTimeout(() => {
+      const el = document.getElementById(currentPageKey);
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY - 100;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    }, 100);
+    return () => clearTimeout(id);
+  }, [currentPageKey]);
 
   const t = translations[lang] || translations.tr;
 
