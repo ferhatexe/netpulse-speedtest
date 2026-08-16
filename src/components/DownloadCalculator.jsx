@@ -74,6 +74,7 @@ export default function DownloadCalculator({ t, speedMbps = 0 }) {
             </div>
             <input
               type="range"
+              aria-label={t.fileSize}
               min="1"
               max="300"
               step="1"
@@ -98,6 +99,7 @@ export default function DownloadCalculator({ t, speedMbps = 0 }) {
             </div>
             <input
               type="range"
+              aria-label={t.currentSpeed}
               min="5"
               max="1000"
               step="5"

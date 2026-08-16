@@ -115,6 +115,7 @@ export default function DnsLeakCheck({ t }) {
           <button
             onClick={runScan}
             disabled={scanning}
+            aria-label={t?.runPrivacyScan || 'Run privacy scan'}
             className="btn-tactile px-3 py-1.5 rounded-full bg-neutral-100 dark:bg-white/10 hover:bg-neutral-200 dark:hover:bg-white/20 text-xs font-bold text-neutral-800 dark:text-neutral-200 flex items-center gap-1.5 transition-colors cursor-pointer shrink-0 border border-black/5 dark:border-white/10"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${scanning ? 'animate-spin' : ''}`} />

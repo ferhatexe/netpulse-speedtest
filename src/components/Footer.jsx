@@ -103,11 +103,11 @@ export default function Footer({ t, lang, setLang, currentPageKey = 'home', them
               </span>
             </div>
 
-            <p className={`text-xs max-w-md leading-relaxed ${theme === 'dark' ? 'text-neutral-400' : 'text-neutral-500'}`}>
+            <p className={`text-xs max-w-md leading-relaxed ${theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'}`}>
               {t.footerDesc}
             </p>
 
-            <div className="flex items-center gap-2 text-[11px] text-neutral-500 font-mono-code">
+            <div className="flex items-center gap-2 text-[11px] text-neutral-300 dark:text-neutral-300 font-mono-code">
               <span>Edge Anycast Network · 99.99% Uptime · SSL 256-bit</span>
             </div>
 
@@ -135,9 +135,9 @@ export default function Footer({ t, lang, setLang, currentPageKey = 'home', them
 
           {/* Col 2: Navigation Links */}
           <div>
-            <h5 className={`font-bold text-xs uppercase tracking-wider mb-3 ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>
+            <h3 className={`font-bold text-xs uppercase tracking-wider mb-3 ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>
               {t.navTools}
-            </h5>
+            </h3>
             <ul className="space-y-2 text-xs">
               <li>
                 <a
@@ -180,9 +180,9 @@ export default function Footer({ t, lang, setLang, currentPageKey = 'home', them
 
           {/* Col 3: Language & Legal */}
           <div>
-            <h5 className={`font-bold text-xs uppercase tracking-wider mb-3 ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>
+            <h3 className={`font-bold text-xs uppercase tracking-wider mb-3 ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>
               Diller / Languages
-            </h5>
+            </h3>
             <div className="flex flex-wrap gap-2 mb-4">
               {[
                 { code: 'tr', label: 'TR' },
@@ -209,12 +209,12 @@ export default function Footer({ t, lang, setLang, currentPageKey = 'home', them
 
             <ul className="space-y-1.5 text-[11px]">
               <li>
-                <a href="#privacy" className={`transition-colors ${theme === 'dark' ? 'text-neutral-400 hover:text-[#88E724]' : 'text-neutral-500 hover:text-black'}`}>
+                <a href="#privacy" className={`inline-flex items-center min-h-[24px] py-1 transition-colors ${theme === 'dark' ? 'text-neutral-300 hover:text-[#88E724]' : 'text-neutral-700 hover:text-black'}`}>
                   {t?.privacyPolicy || 'Privacy Policy'}
                 </a>
               </li>
               <li>
-                <a href="#speed" className={`transition-colors ${theme === 'dark' ? 'text-neutral-400 hover:text-[#88E724]' : 'text-neutral-500 hover:text-black'}`}>
+                <a href="#speed" className={`inline-flex items-center min-h-[24px] py-1 transition-colors ${theme === 'dark' ? 'text-neutral-300 hover:text-[#88E724]' : 'text-neutral-700 hover:text-black'}`}>
                   {t?.termsOfUse || 'Terms of Use'}
                 </a>
               </li>
@@ -224,7 +224,7 @@ export default function Footer({ t, lang, setLang, currentPageKey = 'home', them
 
         {/* Bottom copyright */}
         <div className={`border-t pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] font-mono-code ${
-          theme === 'dark' ? 'border-white/10 text-neutral-500' : 'border-black/5 text-neutral-400'
+          theme === 'dark' ? 'border-white/10 text-neutral-300' : 'border-black/5 text-neutral-600'
         }`}>
           <div>
             © {new Date().getFullYear()} NetPulse Inc. {t.rights}

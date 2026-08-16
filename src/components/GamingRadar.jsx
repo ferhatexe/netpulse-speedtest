@@ -239,6 +239,7 @@ export default function GamingRadar({ t }) {
         <button
           onClick={runProbes}
           disabled={probing}
+          aria-label={t?.pingRadarRefresh || 'Refresh radar'}
           className="btn-tactile px-3.5 py-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-neutral-200 text-xs font-bold flex items-center gap-1.5 border border-white/10 active:scale-95 cursor-pointer disabled:opacity-40"
         >
           <RotateCw className={`w-3.5 h-3.5 ${probing ? 'animate-spin text-[#88E724]' : ''}`} />

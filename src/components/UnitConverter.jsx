@@ -53,6 +53,7 @@ export default function UnitConverter({ t }) {
             <div className="flex items-center gap-1">
               <input
                 type="number"
+                aria-label={t.enterValue}
                 min="1"
                 max="10000"
                 value={mbpsValue}
@@ -64,6 +65,7 @@ export default function UnitConverter({ t }) {
           </div>
           <input
             type="range"
+            aria-label={t.enterValue}
             min="5"
             max="1000"
             value={mbpsValue}
