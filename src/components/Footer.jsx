@@ -31,34 +31,23 @@ const IconYouTube = () => (
   </svg>
 );
 
+/**
+ * Only accounts that actually exist belong here.
+ *
+ * This list previously carried Instagram, X, Facebook and YouTube handles that
+ * had never been registered — so the footer linked visitors to pages that either
+ * 404 or, worse, belong to somebody else who happened to take the name.
+ *
+ * IconTwitterX, IconFacebook and IconYouTube above are kept for when those
+ * accounts are opened; add an entry here at that point.
+ */
 const SOCIAL_LINKS = [
   {
     id: 'instagram',
     label: 'Instagram',
-    href: 'https://instagram.com/netmeter',
+    href: 'https://instagram.com/netmeter.app',
     icon: IconInstagram,
     hoverColor: 'hover:text-pink-500 hover:border-pink-300 hover:bg-pink-50',
-  },
-  {
-    id: 'twitter',
-    label: 'X (Twitter)',
-    href: 'https://x.com/netmeter',
-    icon: IconTwitterX,
-    hoverColor: 'hover:text-neutral-900 hover:border-neutral-400 hover:bg-neutral-100',
-  },
-  {
-    id: 'facebook',
-    label: 'Facebook',
-    href: 'https://facebook.com/netmeter',
-    icon: IconFacebook,
-    hoverColor: 'hover:text-blue-600 hover:border-blue-300 hover:bg-blue-50',
-  },
-  {
-    id: 'youtube',
-    label: 'YouTube',
-    href: 'https://youtube.com/@netmeter',
-    icon: IconYouTube,
-    hoverColor: 'hover:text-red-600 hover:border-red-300 hover:bg-red-50',
   },
 ];
 

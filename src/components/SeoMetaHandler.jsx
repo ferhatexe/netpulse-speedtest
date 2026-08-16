@@ -66,6 +66,9 @@ export default function SeoMetaHandler({ lang = 'tr', pageKey = 'home', t }) {
         browserRequirements: 'Requires JavaScript. Requires HTML5.',
         inLanguage: lang,
         description: currentDesc,
+        // Tells search engines the site and this profile are the same entity.
+        // Only accounts that exist go here.
+        sameAs: ['https://instagram.com/netmeter.app'],
         offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }
       }
     ];
