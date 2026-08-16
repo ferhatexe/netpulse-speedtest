@@ -15,7 +15,8 @@ import SeoFaqSection from './components/SeoFaqSection';
 import SeoMetaHandler from './components/SeoMetaHandler';
 import ShareCardModal from './components/ShareCardModal';
 import LocationMap from './components/LocationMap';
-import CookieConsent from './components/CookieConsent';
+import CookieConsent, { hasAnalyticsConsent } from './components/CookieConsent';
+import { loadAnalytics, trackPageView } from './utils/analytics';
 import Footer from './components/Footer';
 
 import { translations } from './i18n/translations';
@@ -112,6 +113,15 @@ export default function App() {
     }, 100);
     return () => clearTimeout(id);
   }, [currentPageKey]);
+
+  // Returning visitors who already accepted; first-time consent is handled by
+  // the banner itself. Route changes are reported because this is a SPA and
+  // gtag only sees the initial document.
+  useEffect(() => {
+    if (!hasAnalyticsConsent()) return;
+    loadAnalytics();
+    trackPageView(location.pathname);
+  }, [location.pathname]);
 
   const t = translations[lang] || translations.tr;
 

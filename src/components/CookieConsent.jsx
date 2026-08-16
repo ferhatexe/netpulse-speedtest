@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Cookie, Check, X } from 'lucide-react';
+import { loadAnalytics } from '../utils/analytics';
 
 const STORAGE_KEY = 'netmeter_cookie_consent';
 
@@ -41,6 +42,9 @@ export default function CookieConsent({ t }) {
     try {
       localStorage.setItem(STORAGE_KEY, value);
     } catch {}
+    // Start analytics straight away on accept rather than waiting for a reload;
+    // declining leaves it unloaded for the rest of the session.
+    if (value === 'accepted') loadAnalytics();
     setVisible(false);
   };
 
