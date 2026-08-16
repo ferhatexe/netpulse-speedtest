@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Play, RotateCcw, ArrowDown, ArrowUp, Zap, Share2, Server, ShieldCheck, CheckCircle2, HardDrive, Shield, Settings, Sliders, X, Check, RefreshCw } from 'lucide-react';
-import confetti from 'canvas-confetti';
 import {
   measureRealPing,
   measureRealDownload,
@@ -33,6 +32,8 @@ export default function SpeedTestHero({ t, onOpenShare, onSpeedUpdate }) {
   const [isUpdatingIp, setIsUpdatingIp] = useState(false);
 
   const fireworksActiveRef = useRef(false);
+  // Holds the lazily imported canvas-confetti module so reset() can reach it
+  const confettiRef = useRef(null);
 
   // Fast.com Advanced Config State (Paced for realistic Gigabit measurement)
   const [config, setConfig] = useState({
@@ -115,8 +116,19 @@ export default function SpeedTestHero({ t, onOpenShare, onSpeedUpdate }) {
     }
   };
 
-  // Multi-Angle Fireworks Celebration (Controlled)
-  const launchFireworks = () => {
+  // Multi-Angle Fireworks Celebration (Controlled).
+  // canvas-confetti is imported on demand: it only ever runs after a test
+  // finishes, so shipping it in the initial bundle costs every visitor bytes
+  // they may never use.
+  const launchFireworks = async () => {
+    let confetti;
+    try {
+      ({ default: confetti } = await import('canvas-confetti'));
+    } catch {
+      return; // the celebration is decorative; never let it break the result
+    }
+    confettiRef.current = confetti;
+
     fireworksActiveRef.current = true;
     const end = Date.now() + 1400;
     const colors = ['#88E724', '#74DB00', '#FFFFFF', '#FFB800', '#00D4FF'];
@@ -147,7 +159,7 @@ export default function SpeedTestHero({ t, onOpenShare, onSpeedUpdate }) {
   const clearFireworks = () => {
     fireworksActiveRef.current = false;
     try {
-      confetti.reset();
+      confettiRef.current?.reset();
     } catch (e) {}
   };
 
