@@ -56,7 +56,8 @@
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="msapplication-TileColor" content="#121316" />
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
-    <meta name="theme-color" content="#121316" />
+    <meta name="theme-color" content="#F6F6F2" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0D0E12" media="(prefers-color-scheme: dark)" />
 
     <!-- AI & LLM Search Engine Discovery Standard -->
     <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Knowledge Base" />
@@ -120,7 +121,7 @@
     <script>
       (function() {
         try {
-          var theme = localStorage.getItem('netpulse_theme') || 'dark';
+          var theme = localStorage.getItem('netpulse_theme') || 'light';
           if (theme === 'dark') {
             document.documentElement.classList.add('dark');
           } else {

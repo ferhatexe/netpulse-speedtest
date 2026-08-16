@@ -54,16 +54,18 @@ export default function App() {
   const [latestDownloadSpeed, setLatestDownloadSpeed] = useState(0);
 
   /**
-   * Always starts 'dark', which is exactly what the prerendered HTML contains.
-   * Reading localStorage here instead would make the first client render differ
-   * from the server markup for anyone on the light theme, and React discards the
-   * whole prerendered tree on a hydration mismatch — throwing away the faster
-   * paint it was there to provide. The stored preference is applied on mount.
+   * Always starts 'light', which is exactly what the prerendered HTML contains
+   * and what the inline script in index.html assumes when nothing is stored.
+   * These three have to agree: reading localStorage here instead would make the
+   * first client render differ from the server markup for anyone who picked
+   * dark, and React discards the entire prerendered tree on a hydration
+   * mismatch — throwing away the faster paint it exists to provide.
    *
-   * There is no flash of the wrong theme: the inline script in index.html sets
-   * the `dark` class on <html> before first paint, and the CSS follows it.
+   * A stored preference is applied on mount. There is no flash of the wrong
+   * theme, because that inline script sets the class on <html> before first
+   * paint and the CSS follows it.
    */
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState('light');
 
   useEffect(() => {
     try {
