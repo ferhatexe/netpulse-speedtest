@@ -15,8 +15,11 @@
 import { readFileSync, writeFileSync, mkdirSync, rmSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { build } from 'vite';
-import { routeSlugs, getRoutePath, SUPPORTED_LANGS } from '../src/i18n/routes.js';
+import { routeSlugs, getRoutePath, SUPPORTED_LANGS, RTL_LANGS } from '../src/i18n/routes.js';
+import { titles, descriptions, locales } from '../src/i18n/seo.js';
 
+// Mirrors src/config/site.js; SITE_ORIGIN overrides it when the domain changes
+const ORIGIN = (process.env.SITE_ORIGIN || 'https://netpulse.app').replace(/\/+$/, '');
 const DIST = 'dist';
 const SSR_OUT = '.ssr-tmp';
 const PAGES = ['home', 'speed', 'gaming', 'privacy', 'calculator', 'faq'];
@@ -62,11 +65,74 @@ if (cssLink) {
 }
 
 const routes = [];
+const routeMeta = new Map();
 for (const lang of SUPPORTED_LANGS) {
   for (const page of PAGES) {
     if (page !== 'home' && !routeSlugs[lang]?.[page]) continue;
-    routes.push(getRoutePath(lang, page === 'home' ? '' : page));
+    const path = getRoutePath(lang, page === 'home' ? '' : page);
+    routes.push(path);
+    routeMeta.set(path, { lang, page });
   }
+}
+
+const esc = (s) =>
+  String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+/**
+ * Rewrites the head for one route.
+ *
+ * These tags were previously only set at runtime by <SeoMetaHandler>, which a
+ * crawler that does not execute JavaScript never sees. Every prerendered page
+ * therefore shipped `<html lang="tr">`, the Turkish title, and a canonical
+ * pointing at the root — and a canonical pointing elsewhere tells Google the
+ * page is a duplicate, which would have dropped all twelve non-Turkish locales
+ * from the index along with every sub-page.
+ */
+function applyHead(page, route) {
+  const { lang, page: pageKey } = routeMeta.get(route);
+  const title = titles[lang]?.[pageKey] || titles[lang]?.home || titles.tr.home;
+  const description = descriptions[lang] || descriptions.tr;
+  const canonical = ORIGIN + route;
+  const isRtl = RTL_LANGS.includes(lang);
+
+  let out = page;
+
+  out = out.replace(/<html lang="[^"]*"/, `<html lang="${lang}"${isRtl ? ' dir="rtl"' : ''}`);
+  out = out.replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(title)}</title>`);
+  out = out.replace(
+    /(<meta name="description" content=")[^"]*(")/,
+    `$1${esc(description)}$2`
+  );
+  out = out.replace(
+    /(<link rel="canonical" href=")[^"]*(")/,
+    `$1${esc(canonical)}$2`
+  );
+  out = out.replace(/(<meta property="og:url" content=")[^"]*(")/, `$1${esc(canonical)}$2`);
+  out = out.replace(/(<meta property="og:title" content=")[^"]*(")/, `$1${esc(title)}$2`);
+  out = out.replace(/(<meta property="og:description" content=")[^"]*(")/, `$1${esc(description)}$2`);
+  out = out.replace(
+    /(<meta property="og:locale" content=")[^"]*(")/,
+    `$1${locales[lang] || 'tr_TR'}$2`
+  );
+  out = out.replace(/(<meta name="twitter:url" content=")[^"]*(")/, `$1${esc(canonical)}$2`);
+  out = out.replace(/(<meta name="twitter:title" content=")[^"]*(")/, `$1${esc(title)}$2`);
+  out = out.replace(
+    /(<meta name="twitter:description" content=")[^"]*(")/,
+    `$1${esc(description)}$2`
+  );
+
+  // hreflang has to describe THIS page across locales, not always the home page
+  for (const l of SUPPORTED_LANGS) {
+    const hasPage = pageKey === 'home' || Boolean(routeSlugs[l]?.[pageKey]);
+    if (!hasPage) continue;
+    const target = getRoutePath(l, pageKey === 'home' ? '' : pageKey);
+    out = out.replace(
+      new RegExp(`(<link rel="alternate" hreflang="${l}" href=")[^"]*(")`),
+      `$1${esc(ORIGIN + target)}$2`
+    );
+  }
+
+  return out;
 }
 
 let written = 0;
@@ -84,7 +150,7 @@ for (const route of routes) {
     continue;
   }
 
-  const page = template.replace(ROOT_MARKER, `<div id="root">${html}</div>`);
+  const page = applyHead(template.replace(ROOT_MARKER, `<div id="root">${html}</div>`), route);
 
   if (route === '/') {
     writeFileSync(join(DIST, 'index.html'), page, 'utf8');
