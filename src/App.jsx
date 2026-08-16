@@ -69,7 +69,7 @@ export default function App() {
 
   useEffect(() => {
     try {
-      const stored = localStorage.getItem('netpulse_theme');
+      const stored = localStorage.getItem('netmeter_theme');
       if (stored && stored !== theme) setTheme(stored);
     } catch {}
     // Intentionally mount-only: this syncs the initial preference, after which
@@ -85,7 +85,7 @@ export default function App() {
       document.documentElement.classList.remove('dark');
       document.body.classList.remove('dark');
     }
-    localStorage.setItem('netpulse_theme', theme);
+    localStorage.setItem('netmeter_theme', theme);
   }, [theme]);
 
   // Header/Footer call this to switch language. Navigation is the whole

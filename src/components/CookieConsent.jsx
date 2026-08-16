@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Cookie, Check, X } from 'lucide-react';
 
-const STORAGE_KEY = 'netpulse_cookie_consent';
+const STORAGE_KEY = 'netmeter_cookie_consent';
 
 /**
  * GDPR/ePrivacy consent gate.

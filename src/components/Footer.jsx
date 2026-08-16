@@ -35,28 +35,28 @@ const SOCIAL_LINKS = [
   {
     id: 'instagram',
     label: 'Instagram',
-    href: 'https://instagram.com/netpulse',
+    href: 'https://instagram.com/netmeter',
     icon: IconInstagram,
     hoverColor: 'hover:text-pink-500 hover:border-pink-300 hover:bg-pink-50',
   },
   {
     id: 'twitter',
     label: 'X (Twitter)',
-    href: 'https://x.com/netpulse',
+    href: 'https://x.com/netmeter',
     icon: IconTwitterX,
     hoverColor: 'hover:text-neutral-900 hover:border-neutral-400 hover:bg-neutral-100',
   },
   {
     id: 'facebook',
     label: 'Facebook',
-    href: 'https://facebook.com/netpulse',
+    href: 'https://facebook.com/netmeter',
     icon: IconFacebook,
     hoverColor: 'hover:text-blue-600 hover:border-blue-300 hover:bg-blue-50',
   },
   {
     id: 'youtube',
     label: 'YouTube',
-    href: 'https://youtube.com/@netpulse',
+    href: 'https://youtube.com/@netmeter',
     icon: IconYouTube,
     hoverColor: 'hover:text-red-600 hover:border-red-300 hover:bg-red-50',
   },
@@ -227,7 +227,7 @@ export default function Footer({ t, lang, setLang, currentPageKey = 'home', them
           theme === 'dark' ? 'border-white/10 text-neutral-300' : 'border-black/5 text-neutral-600'
         }`}>
           <div>
-            © {new Date().getFullYear()} NetPulse Inc. {t.rights}
+            © {new Date().getFullYear()} NetMeter Inc. {t.rights}
           </div>
           <div className="text-center sm:text-right max-w-sm">
             {t.disclaimer}

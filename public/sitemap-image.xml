@@ -5,12 +5,12 @@
     <loc>https://netmeter.app/</loc>
     <image:image>
       <image:loc>https://netmeter.app/og-preview.png</image:loc>
-      <image:title>NetPulse İnternet Hız ve Ağ Performans Testi</image:title>
+      <image:title>NetMeter İnternet Hız ve Ağ Performans Testi</image:title>
       <image:caption>Download, Upload, Ping, Bufferbloat ve Oyun Radarı Göstergesi</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://netmeter.app/web-app-manifest-512x512.png</image:loc>
-      <image:title>NetPulse Pro Logo Icon</image:title>
+      <image:title>NetMeter Pro Logo Icon</image:title>
     </image:image>
   </url>
 </urlset>

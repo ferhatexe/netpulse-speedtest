@@ -59,7 +59,7 @@ export default function SeoMetaHandler({ lang = 'tr', pageKey = 'home', t }) {
     const graph = [
       {
         '@type': 'WebApplication',
-        name: 'NetPulse',
+        name: 'NetMeter',
         url: siteUrl(location.pathname),
         applicationCategory: 'UtilitiesApplication',
         operatingSystem: 'All',
@@ -82,11 +82,11 @@ export default function SeoMetaHandler({ lang = 'tr', pageKey = 'home', t }) {
       });
     }
 
-    let ld = document.getElementById('netpulse-structured-data');
+    let ld = document.getElementById('netmeter-structured-data');
     if (!ld) {
       ld = document.createElement('script');
       ld.type = 'application/ld+json';
-      ld.id = 'netpulse-structured-data';
+      ld.id = 'netmeter-structured-data';
       document.head.appendChild(ld);
     }
     ld.textContent = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph });

@@ -107,7 +107,7 @@ export default function ShareCardModal({ isOpen, onClose, metrics, t, lang = 'tr
     // Brand Name
     ctx.fillStyle = '#FFFFFF';
     ctx.font = 'bold 34px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-    ctx.fillText('NetPulse', 130, 101);
+    ctx.fillText('NetMeter', 130, 101);
 
     ctx.fillStyle = '#88E724';
     ctx.font = 'bold 34px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
@@ -230,7 +230,7 @@ export default function ShareCardModal({ isOpen, onClose, metrics, t, lang = 'tr
     const canvas = canvasRef.current;
     if (!canvas) return;
     const link = document.createElement('a');
-    link.download = `netpulse-speed-report-${Date.now()}.png`;
+    link.download = `netmeter-speed-report-${Date.now()}.png`;
     link.href = canvas.toDataURL('image/png');
     link.click();
   };

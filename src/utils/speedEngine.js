@@ -1,5 +1,5 @@
 /**
- * NetPulse Gigabit Measurement Engine — Fast.com Architecture
+ * NetMeter Gigabit Measurement Engine — Fast.com Architecture
  * Dual-Stack IPv4 & IPv6 Live Resolver with Zero Caching
  * Configurable Parallel Streams (1-30) & Test Duration (5-30s)
  */

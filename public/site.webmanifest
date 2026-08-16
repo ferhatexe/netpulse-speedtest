@@ -1,6 +1,6 @@
 {
-  "name": "NetPulse™ — Hepsi Bir Arada Ağ İstasyonu & Hız Testi",
-  "short_name": "NetPulse",
+  "name": "NetMeter — Hepsi Bir Arada Ağ İstasyonu & Hız Testi",
+  "short_name": "NetMeter",
   "description": "Ultra hızlı internet hız testi, oyun ping radarı, bufferbloat analizi ve ağ araçları.",
   "start_url": "/",
   "display": "standalone",

@@ -1,4 +1,4 @@
-# NetPulse
+# NetMeter
 
 > Browser-based network measurement: download, upload, ping, jitter and
 > bufferbloat, plus gaming-region latency, WebRTC/DNS leak exposure and

@@ -1,7 +1,7 @@
-# NetPulse™ Full Technical Documentation & Knowledge Base for LLM Agents
+# NetMeter Full Technical Documentation & Knowledge Base for LLM Agents
 
 ## 1. Overview
-NetPulse (accessible at https://netmeter.app) is an all-in-one web platform providing network diagnostics, speed benchmarks, gaming latency radaring, privacy leak detection, and network calculation utilities.
+NetMeter (accessible at https://netmeter.app) is an all-in-one web platform providing network diagnostics, speed benchmarks, gaming latency radaring, privacy leak detection, and network calculation utilities.
 
 ## 2. Technical Architecture
 - **Client-Side Engine**: Real-time multi-threaded streaming measurements built with React 18, Web Workers, and WebRTC data channels.
@@ -23,7 +23,7 @@ NetPulse (accessible at https://netmeter.app) is an all-in-one web platform prov
 ### 3.1.1 Latency Measurement (why raw TTFB is not ping)
 A plain time-to-first-byte against an edge speed endpoint is not the network
 round-trip: the serving Worker adds 25-600ms of its own processing, which can be
-95% of the measured value. NetPulse subtracts the server's self-reported time
+95% of the measured value. NetMeter subtracts the server's self-reported time
 from `Server-Timing` and, where the edge exposes kernel TCP statistics
 (`cfL4; min_rtt`), reports that value directly.
 - **Ping (ms)**: kernel-measured minimum round-trip, which tracks ICMP to ~1ms.
@@ -55,6 +55,6 @@ from `Server-Timing` and, where the edge exposes kernel TCP statistics
 - `/es` (Spanish)
 
 ## 5. Contact & Meta Information
-- Name: NetPulse Network Technologies
+- Name: NetMeter Network Technologies
 - Website: https://netmeter.app
 - License: Proprietary SaaS & Open Diagnostic APIs

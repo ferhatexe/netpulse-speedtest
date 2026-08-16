@@ -54,7 +54,7 @@ export const translations = {
     // Top Bar & Header
     topBannerBadge: "v2.5 Turbo",
     topBannerText: "Yeni Nesil Çok Kanallı Bufferbloat & 10G CDN Ölçüm Motoru Devrede",
-    brandName: "NetPulse",
+    brandName: "NetMeter",
     tagline: "Hepsi Bir Arada Ağ İstasyonu",
     navSpeed: "Hız & Bufferbloat",
     navGaming: "Oyun Radarı",
@@ -197,7 +197,7 @@ export const translations = {
     close: "Kapat",
     
     // Footer & SEO
-    footerDesc: "NetPulse, dünya standartlarında tarafsız internet performans analizleri, bufferbloat testleri ve ağ güvenliği araçları sunar.",
+    footerDesc: "NetMeter, dünya standartlarında tarafsız internet performans analizleri, bufferbloat testleri ve ağ güvenliği araçları sunar.",
     rights: "Tüm Hakları Saklıdır.",
     disclaimer: "Ölçüm sonuçları anlık ağ yoğunluğuna ve sunucu konumuna göre değişkenlik gösterebilir.",
 
@@ -208,7 +208,7 @@ export const translations = {
     faqs: [
       {
         q: "Bufferbloat nedir ve oyunlarda ping neden aniden fırlar?",
-        a: "Bufferbloat, internet bağlantınız yoğun veri trafiği altındayken (örneğin evde biri 4K video izlerken veya dosya indirirken) modem/router önbelleklerinin şişmesi ve anlık ping sıçramalarına yol açması durumudur. NetPulse Bufferbloat motoru, hattınızı yapay yük altına sokarak oyun içi gerçek gecikme stabilitesini (A+ ile D arası) puanlar."
+        a: "Bufferbloat, internet bağlantınız yoğun veri trafiği altındayken (örneğin evde biri 4K video izlerken veya dosya indirirken) modem/router önbelleklerinin şişmesi ve anlık ping sıçramalarına yol açması durumudur. NetMeter Bufferbloat motoru, hattınızı yapay yük altına sokarak oyun içi gerçek gecikme stabilitesini (A+ ile D arası) puanlar."
       },
       {
         q: "Hız testi yaparken nelere dikkat edilmelidir?",
@@ -285,7 +285,7 @@ export const translations = {
     copy: "Copy",
     topBannerBadge: "v2.5 Turbo",
     topBannerText: "Next-Gen Multi-Stream Bufferbloat & 10G CDN Benchmark Active",
-    brandName: "NetPulse",
+    brandName: "NetMeter",
     tagline: "All-in-One Network Command Station",
     navSpeed: "Speed & Bufferbloat",
     navGaming: "Gaming Radar",
@@ -419,7 +419,7 @@ export const translations = {
     shareEdgeSub: "10 Gbps Cloudflare Anycast Fiber",
     close: "Close",
     
-    footerDesc: "NetPulse provides neutral, high-precision network diagnostics, bufferbloat benchmarks, and privacy tools.",
+    footerDesc: "NetMeter provides neutral, high-precision network diagnostics, bufferbloat benchmarks, and privacy tools.",
     rights: "All Rights Reserved.",
     disclaimer: "Benchmark metrics depend on real-time routing hops, ISP peering, and server load.",
 
@@ -430,7 +430,7 @@ export const translations = {
     faqs: [
       {
         q: "What is Bufferbloat and why does ping spike in online games?",
-        a: "Bufferbloat happens when high network traffic (like 4K streaming or large downloads) fills up router buffers, causing massive latency spikes. NetPulse tests latency under load to grade your connection stability from A+ to D."
+        a: "Bufferbloat happens when high network traffic (like 4K streaming or large downloads) fills up router buffers, causing massive latency spikes. NetMeter tests latency under load to grade your connection stability from A+ to D."
       },
       {
         q: "How can I get the most accurate speed test results?",
@@ -513,7 +513,7 @@ export const translations = {
     unknownApi: "Unbekannt (API nicht unterstützt)",
     topBannerBadge: "v2.5 Turbo",
     topBannerText: "Multi-Stream Bufferbloat & 10G CDN Mess-Engine Aktiv",
-    brandName: "NetPulse",
+    brandName: "NetMeter",
     tagline: "All-in-One Netzwerk-Kommandozentrale",
     navSpeed: "Geschwindigkeit & Bufferbloat",
     navGaming: "Gaming-Radar",
@@ -641,7 +641,7 @@ export const translations = {
     shareEdgeSub: "10 Gbps Cloudflare Anycast Fiber",
     close: "Schließen",
     
-    footerDesc: "NetPulse bietet hochpräzise Netzwerkdiagnosen, Bufferbloat-Tests und Datenschutz-Tools.",
+    footerDesc: "NetMeter bietet hochpräzise Netzwerkdiagnosen, Bufferbloat-Tests und Datenschutz-Tools.",
     rights: "Alle Rechte vorbehalten.",
     disclaimer: "Testergebnisse hängen von der Netzauslastung und Serverentfernung ab.",
     
@@ -652,7 +652,7 @@ export const translations = {
     faqs: [
       {
         q: "Was ist Bufferbloat und warum steigt der Ping bei Online-Spielen plötzlich an?",
-        a: "Bufferbloat tritt auf, wenn starker Datenverkehr (z. B. 4K-Streaming oder Downloads) die Router-Puffer überlastet, was zu extremen Latenzspitzen führt. NetPulse testet die Latenz unter Volllast und bewertet Ihre Leitungsstabilität von A+ bis D."
+        a: "Bufferbloat tritt auf, wenn starker Datenverkehr (z. B. 4K-Streaming oder Downloads) die Router-Puffer überlastet, was zu extremen Latenzspitzen führt. NetMeter testet die Latenz unter Volllast und bewertet Ihre Leitungsstabilität von A+ bis D."
       },
       {
         q: "Worauf sollte man bei einem Speedtest achten?",
@@ -735,7 +735,7 @@ export const translations = {
     unknownApi: "Desconocido (API no compatible)",
     topBannerBadge: "v2.5 Turbo",
     topBannerText: "Motor de Medición Multi-Stream Bufferbloat & 10G CDN Activo",
-    brandName: "NetPulse",
+    brandName: "NetMeter",
     tagline: "Estación Integral de Diagnóstico de Red",
     navSpeed: "Velocidad & Bufferbloat",
     navGaming: "Radar Gaming",
@@ -863,7 +863,7 @@ export const translations = {
     shareEdgeSub: "10 Gbps Cloudflare Anycast Fiber",
     close: "Cerrar",
     
-    footerDesc: "NetPulse ofrece diagnósticos neutrales de red, pruebas de bufferbloat y herramientas de privacidad.",
+    footerDesc: "NetMeter ofrece diagnósticos neutrales de red, pruebas de bufferbloat y herramientas de privacidad.",
     rights: "Todos los derechos reservados.",
     disclaimer: "Los resultados pueden variar según la carga de la red y la distancia al servidor.",
 
@@ -874,7 +874,7 @@ export const translations = {
     faqs: [
       {
         q: "¿Qué es el Bufferbloat y por qué el ping se dispara en juegos online?",
-        a: "El bufferbloat ocurre cuando el tráfico intenso (como streaming 4K o descargas grandes) satura los búferes del router, causando picos graves de latencia. NetPulse prueba la latencia bajo carga para calificar la estabilidad de su línea de A+ a D."
+        a: "El bufferbloat ocurre cuando el tráfico intenso (como streaming 4K o descargas grandes) satura los búferes del router, causando picos graves de latencia. NetMeter prueba la latencia bajo carga para calificar la estabilidad de su línea de A+ a D."
       },
       {
         q: "¿Qué precauciones tomar al realizar un test de velocidad?",
@@ -952,7 +952,7 @@ export const translations = {
     copy: "Copier",
     topBannerBadge: "v2.5 Turbo",
     topBannerText: "Banc d'essai nouvelle génération : bufferbloat multi-flux et CDN 10G actif",
-    brandName: "NetPulse",
+    brandName: "NetMeter",
     tagline: "Station de diagnostic réseau tout-en-un",
     navSpeed: "Débit et bufferbloat",
     navGaming: "Radar gaming",
@@ -1076,7 +1076,7 @@ export const translations = {
     shareJitterSubtitle: "Variance de latence",
     shareEdgeSub: "Edge Anycast Cloudflare",
     close: "Fermer",
-    footerDesc: "NetPulse fournit des diagnostics réseau neutres et précis, des tests de bufferbloat et des outils de confidentialité.",
+    footerDesc: "NetMeter fournit des diagnostics réseau neutres et précis, des tests de bufferbloat et des outils de confidentialité.",
     rights: "Tous droits réservés.",
     disclaimer: "Les mesures dépendent du routage en temps réel, du peering FAI et de la charge des serveurs.",
     faqBadge: "GUIDE ET BASE DE CONNAISSANCES",
@@ -1085,7 +1085,7 @@ export const translations = {
     faqs: [
       {
         q: "Qu'est-ce que le bufferbloat et pourquoi le ping s'envole-t-il en jeu ?",
-        a: "Le bufferbloat survient lorsqu'un trafic important (streaming 4K ou gros téléchargements) sature les tampons du routeur, provoquant de fortes hausses de latence. NetPulse mesure la latence en charge et note la stabilité de votre connexion de A+ à D."
+        a: "Le bufferbloat survient lorsqu'un trafic important (streaming 4K ou gros téléchargements) sature les tampons du routeur, provoquant de fortes hausses de latence. NetMeter mesure la latence en charge et note la stabilité de votre connexion de A+ à D."
       },
       {
         q: "Comment obtenir les résultats les plus fiables ?",
@@ -1163,7 +1163,7 @@ export const translations = {
     copy: "Copia",
     topBannerBadge: "v2.5 Turbo",
     topBannerText: "Benchmark di nuova generazione: bufferbloat multi-flusso e CDN 10G attivo",
-    brandName: "NetPulse",
+    brandName: "NetMeter",
     tagline: "Stazione di diagnostica di rete tutto-in-uno",
     navSpeed: "Velocità e bufferbloat",
     navGaming: "Radar gaming",
@@ -1287,7 +1287,7 @@ export const translations = {
     shareJitterSubtitle: "Varianza della latenza",
     shareEdgeSub: "Edge Anycast Cloudflare",
     close: "Chiudi",
-    footerDesc: "NetPulse offre diagnostica di rete neutrale e precisa, benchmark del bufferbloat e strumenti per la privacy.",
+    footerDesc: "NetMeter offre diagnostica di rete neutrale e precisa, benchmark del bufferbloat e strumenti per la privacy.",
     rights: "Tutti i diritti riservati.",
     disclaimer: "Le misurazioni dipendono dall'instradamento in tempo reale, dal peering del provider e dal carico dei server.",
     faqBadge: "GUIDA E BASE DI CONOSCENZA",
@@ -1296,7 +1296,7 @@ export const translations = {
     faqs: [
       {
         q: "Che cos'è il bufferbloat e perché il ping schizza nei giochi online?",
-        a: "Il bufferbloat si verifica quando un traffico intenso (streaming 4K o download pesanti) riempie i buffer del router, causando forti picchi di latenza. NetPulse misura la latenza sotto carico e valuta la stabilità della connessione da A+ a D."
+        a: "Il bufferbloat si verifica quando un traffico intenso (streaming 4K o download pesanti) riempie i buffer del router, causando forti picchi di latenza. NetMeter misura la latenza sotto carico e valuta la stabilità della connessione da A+ a D."
       },
       {
         q: "Come ottenere i risultati più accurati?",
@@ -1374,7 +1374,7 @@ export const translations = {
     copy: "Copiar",
     topBannerBadge: "v2.5 Turbo",
     topBannerText: "Teste de nova geração: bufferbloat multifluxo e CDN 10G ativo",
-    brandName: "NetPulse",
+    brandName: "NetMeter",
     tagline: "Estação de diagnóstico de rede tudo-em-um",
     navSpeed: "Velocidade e bufferbloat",
     navGaming: "Radar de jogos",
@@ -1498,7 +1498,7 @@ export const translations = {
     shareJitterSubtitle: "Variância da latência",
     shareEdgeSub: "Edge Anycast da Cloudflare",
     close: "Fechar",
-    footerDesc: "O NetPulse oferece diagnósticos de rede neutros e precisos, testes de bufferbloat e ferramentas de privacidade.",
+    footerDesc: "O NetMeter oferece diagnósticos de rede neutros e precisos, testes de bufferbloat e ferramentas de privacidade.",
     rights: "Todos os direitos reservados.",
     disclaimer: "As medições dependem do encaminhamento em tempo real, do peering do operador e da carga dos servidores.",
     faqBadge: "GUIA E BASE DE CONHECIMENTO",
@@ -1507,7 +1507,7 @@ export const translations = {
     faqs: [
       {
         q: "O que é o bufferbloat e porque é que o ping dispara nos jogos online?",
-        a: "O bufferbloat ocorre quando tráfego intenso (streaming 4K ou descargas grandes) enche os buffers do router, provocando enormes picos de latência. O NetPulse mede a latência sob carga e classifica a estabilidade da ligação de A+ a D."
+        a: "O bufferbloat ocorre quando tráfego intenso (streaming 4K ou descargas grandes) enche os buffers do router, provocando enormes picos de latência. O NetMeter mede a latência sob carga e classifica a estabilidade da ligação de A+ a D."
       },
       {
         q: "Como obter os resultados mais exatos?",
@@ -1585,7 +1585,7 @@ export const translations = {
     copy: "Kopiëren",
     topBannerBadge: "v2.5 Turbo",
     topBannerText: "Nieuwe generatie benchmark: multi-stream bufferbloat en 10G CDN actief",
-    brandName: "NetPulse",
+    brandName: "NetMeter",
     tagline: "Alles-in-één netwerkdiagnosestation",
     navSpeed: "Snelheid en bufferbloat",
     navGaming: "Gamingradar",
@@ -1709,7 +1709,7 @@ export const translations = {
     shareJitterSubtitle: "Latentievariatie",
     shareEdgeSub: "Cloudflare Anycast Edge",
     close: "Sluiten",
-    footerDesc: "NetPulse levert neutrale, uiterst nauwkeurige netwerkdiagnostiek, bufferbloat-tests en privacytools.",
+    footerDesc: "NetMeter levert neutrale, uiterst nauwkeurige netwerkdiagnostiek, bufferbloat-tests en privacytools.",
     rights: "Alle rechten voorbehouden.",
     disclaimer: "Meetresultaten hangen af van realtime routering, providerpeering en serverbelasting.",
     faqBadge: "GIDS EN KENNISBANK",
@@ -1718,7 +1718,7 @@ export const translations = {
     faqs: [
       {
         q: "Wat is bufferbloat en waarom piekt de ping in online games?",
-        a: "Bufferbloat ontstaat wanneer zwaar verkeer (4K-streaming of grote downloads) de buffers van de router vult, wat forse latentiepieken veroorzaakt. NetPulse meet de latentie onder belasting en beoordeelt de stabiliteit van je verbinding van A+ tot D."
+        a: "Bufferbloat ontstaat wanneer zwaar verkeer (4K-streaming of grote downloads) de buffers van de router vult, wat forse latentiepieken veroorzaakt. NetMeter meet de latentie onder belasting en beoordeelt de stabiliteit van je verbinding van A+ tot D."
       },
       {
         q: "Hoe krijg ik de nauwkeurigste testresultaten?",
@@ -1796,7 +1796,7 @@ export const translations = {
     copy: "Kopiuj",
     topBannerBadge: "v2.5 Turbo",
     topBannerText: "Test nowej generacji: wielostrumieniowy bufferbloat i CDN 10G aktywny",
-    brandName: "NetPulse",
+    brandName: "NetMeter",
     tagline: "Kompleksowa stacja diagnostyki sieci",
     navSpeed: "Prędkość i bufferbloat",
     navGaming: "Radar gamingowy",
@@ -1920,7 +1920,7 @@ export const translations = {
     shareJitterSubtitle: "Wariancja opóźnienia",
     shareEdgeSub: "Cloudflare Anycast Edge",
     close: "Zamknij",
-    footerDesc: "NetPulse zapewnia neutralną, bardzo precyzyjną diagnostykę sieci, testy bufferbloat i narzędzia prywatności.",
+    footerDesc: "NetMeter zapewnia neutralną, bardzo precyzyjną diagnostykę sieci, testy bufferbloat i narzędzia prywatności.",
     rights: "Wszelkie prawa zastrzeżone.",
     disclaimer: "Wyniki pomiarów zależą od trasowania w czasie rzeczywistym, peeringu dostawcy i obciążenia serwerów.",
     faqBadge: "PORADNIK I BAZA WIEDZY",
@@ -1929,7 +1929,7 @@ export const translations = {
     faqs: [
       {
         q: "Czym jest bufferbloat i dlaczego ping skacze w grach online?",
-        a: "Bufferbloat pojawia się, gdy duży ruch (streaming 4K lub duże pobierania) zapełnia bufory routera, powodując ogromne skoki opóźnień. NetPulse mierzy opóźnienie pod obciążeniem i ocenia stabilność łącza w skali od A+ do D."
+        a: "Bufferbloat pojawia się, gdy duży ruch (streaming 4K lub duże pobierania) zapełnia bufory routera, powodując ogromne skoki opóźnień. NetMeter mierzy opóźnienie pod obciążeniem i ocenia stabilność łącza w skali od A+ do D."
       },
       {
         q: "Jak uzyskać najdokładniejsze wyniki testu?",
@@ -2007,7 +2007,7 @@ export const translations = {
     copy: "Копировать",
     topBannerBadge: "v2.5 Turbo",
     topBannerText: "Тест нового поколения: многопоточный bufferbloat и 10G CDN активны",
-    brandName: "NetPulse",
+    brandName: "NetMeter",
     tagline: "Универсальная станция диагностики сети",
     navSpeed: "Скорость и bufferbloat",
     navGaming: "Игровой радар",
@@ -2131,7 +2131,7 @@ export const translations = {
     shareJitterSubtitle: "Разброс задержки",
     shareEdgeSub: "Cloudflare Anycast Edge",
     close: "Закрыть",
-    footerDesc: "NetPulse предоставляет нейтральную высокоточную диагностику сети, тесты bufferbloat и инструменты приватности.",
+    footerDesc: "NetMeter предоставляет нейтральную высокоточную диагностику сети, тесты bufferbloat и инструменты приватности.",
     rights: "Все права защищены.",
     disclaimer: "Результаты измерений зависят от маршрутизации в реальном времени, пиринга провайдера и нагрузки серверов.",
     faqBadge: "РУКОВОДСТВО И БАЗА ЗНАНИЙ",
@@ -2140,7 +2140,7 @@ export const translations = {
     faqs: [
       {
         q: "Что такое bufferbloat и почему пинг скачет в онлайн-играх?",
-        a: "Bufferbloat возникает, когда интенсивный трафик (стриминг 4K или крупные загрузки) заполняет буферы роутера, вызывая резкие скачки задержки. NetPulse измеряет задержку под нагрузкой и оценивает стабильность соединения по шкале от A+ до D."
+        a: "Bufferbloat возникает, когда интенсивный трафик (стриминг 4K или крупные загрузки) заполняет буферы роутера, вызывая резкие скачки задержки. NetMeter измеряет задержку под нагрузкой и оценивает стабильность соединения по шкале от A+ до D."
       },
       {
         q: "Как получить наиболее точные результаты теста?",
@@ -2218,7 +2218,7 @@ export const translations = {
     copy: "コピー",
     topBannerBadge: "v2.5 Turbo",
     topBannerText: "次世代のマルチストリーム・バッファブロートと 10G CDN ベンチマークが有効",
-    brandName: "NetPulse",
+    brandName: "NetMeter",
     tagline: "オールインワンのネットワーク診断ステーション",
     navSpeed: "速度とバッファブロート",
     navGaming: "ゲーミングレーダー",
@@ -2342,7 +2342,7 @@ export const translations = {
     shareJitterSubtitle: "遅延のばらつき",
     shareEdgeSub: "Cloudflare Anycast エッジ",
     close: "閉じる",
-    footerDesc: "NetPulse は中立で高精度なネットワーク診断、バッファブロート測定、プライバシーツールを提供します。",
+    footerDesc: "NetMeter は中立で高精度なネットワーク診断、バッファブロート測定、プライバシーツールを提供します。",
     rights: "All Rights Reserved.",
     disclaimer: "測定値はリアルタイムの経路、ISP のピアリング、サーバー負荷に左右されます。",
     faqBadge: "ガイドとナレッジベース",
@@ -2351,7 +2351,7 @@ export const translations = {
     faqs: [
       {
         q: "バッファブロートとは何ですか。なぜオンラインゲームで Ping が跳ね上がるのですか。",
-        a: "バッファブロートは、4K 配信や大容量ダウンロードなどの大量の通信がルーターのバッファを埋め尽くし、大きな遅延スパイクを引き起こす現象です。NetPulse は負荷時の遅延を測定し、接続の安定性を A+ から D で評価します。"
+        a: "バッファブロートは、4K 配信や大容量ダウンロードなどの大量の通信がルーターのバッファを埋め尽くし、大きな遅延スパイクを引き起こす現象です。NetMeter は負荷時の遅延を測定し、接続の安定性を A+ から D で評価します。"
       },
       {
         q: "最も正確なテスト結果を得るにはどうすればよいですか。",
@@ -2429,7 +2429,7 @@ export const translations = {
     copy: "复制",
     topBannerBadge: "v2.5 Turbo",
     topBannerText: "新一代多流缓冲膨胀与 10G CDN 基准测试已启用",
-    brandName: "NetPulse",
+    brandName: "NetMeter",
     tagline: "一体化网络诊断工作站",
     navSpeed: "速度与缓冲膨胀",
     navGaming: "游戏雷达",
@@ -2553,7 +2553,7 @@ export const translations = {
     shareJitterSubtitle: "延迟波动",
     shareEdgeSub: "Cloudflare Anycast 边缘节点",
     close: "关闭",
-    footerDesc: "NetPulse 提供中立、高精度的网络诊断、缓冲膨胀基准测试与隐私工具。",
+    footerDesc: "NetMeter 提供中立、高精度的网络诊断、缓冲膨胀基准测试与隐私工具。",
     rights: "版权所有。",
     disclaimer: "测量结果取决于实时路由、运营商互联和服务器负载。",
     faqBadge: "指南与知识库",
@@ -2562,7 +2562,7 @@ export const translations = {
     faqs: [
       {
         q: "什么是缓冲膨胀？为什么网络游戏中延迟会突然飙升？",
-        a: "当大流量（如 4K 串流或大文件下载）填满路由器缓冲区时，就会出现缓冲膨胀，导致延迟大幅飙升。NetPulse 在负载状态下测量延迟，并将连接稳定性从 A+ 到 D 进行评级。"
+        a: "当大流量（如 4K 串流或大文件下载）填满路由器缓冲区时，就会出现缓冲膨胀，导致延迟大幅飙升。NetMeter 在负载状态下测量延迟，并将连接稳定性从 A+ 到 D 进行评级。"
       },
       {
         q: "如何获得最准确的测速结果？",
@@ -2640,7 +2640,7 @@ export const translations = {
     copy: "نسخ",
     topBannerBadge: "v2.5 Turbo",
     topBannerText: "اختبار الجيل الجديد لتضخّم التخزين المؤقت متعدد التدفقات وشبكة CDN بسرعة 10G مُفعّل",
-    brandName: "NetPulse",
+    brandName: "NetMeter",
     tagline: "محطة تشخيص الشبكة المتكاملة",
     navSpeed: "السرعة وتضخّم التخزين",
     navGaming: "رادار الألعاب",
@@ -2764,7 +2764,7 @@ export const translations = {
     shareJitterSubtitle: "تباين الكمون",
     shareEdgeSub: "حافة Cloudflare Anycast",
     close: "إغلاق",
-    footerDesc: "يوفّر NetPulse تشخيصًا محايدًا وعالي الدقة للشبكة، واختبارات تضخّم التخزين المؤقت، وأدوات الخصوصية.",
+    footerDesc: "يوفّر NetMeter تشخيصًا محايدًا وعالي الدقة للشبكة، واختبارات تضخّم التخزين المؤقت، وأدوات الخصوصية.",
     rights: "جميع الحقوق محفوظة.",
     disclaimer: "تعتمد نتائج القياس على مسارات التوجيه اللحظية واتصال مزوّد الخدمة وحِمل الخوادم.",
     faqBadge: "الدليل وقاعدة المعرفة",
@@ -2773,7 +2773,7 @@ export const translations = {
     faqs: [
       {
         q: "ما هو تضخّم التخزين المؤقت ولماذا يرتفع زمن الاستجابة فجأة في الألعاب؟",
-        a: "يحدث تضخّم التخزين المؤقت عندما تملأ حركة مرور كثيفة (مثل بث 4K أو التنزيلات الكبيرة) ذاكرة التخزين المؤقت في الموجّه، ما يسبّب قفزات كبيرة في الكمون. يقيس NetPulse الكمون تحت الحِمل ويصنّف استقرار اتصالك من A+ إلى D."
+        a: "يحدث تضخّم التخزين المؤقت عندما تملأ حركة مرور كثيفة (مثل بث 4K أو التنزيلات الكبيرة) ذاكرة التخزين المؤقت في الموجّه، ما يسبّب قفزات كبيرة في الكمون. يقيس NetMeter الكمون تحت الحِمل ويصنّف استقرار اتصالك من A+ إلى D."
       },
       {
         q: "كيف أحصل على أدق نتائج للاختبار؟",

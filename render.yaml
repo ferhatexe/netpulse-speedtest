@@ -7,7 +7,7 @@
 # has no effect on Render.
 services:
   - type: web
-    name: netpulse
+    name: netmeter
     runtime: static
     buildCommand: npm ci && npm run build
     staticPublishPath: ./dist

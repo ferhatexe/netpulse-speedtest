@@ -1,4 +1,4 @@
-# NetPulse Robots.txt
+# NetMeter Robots.txt
 # https://netmeter.app/
 
 User-agent: *

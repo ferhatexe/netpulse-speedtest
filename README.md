@@ -1,4 +1,4 @@
-# NetPulse
+# NetMeter
 
 Internet speed, latency and network diagnostics in the browser. Measures
 download, upload, ping, jitter and bufferbloat, plus gaming-region latency,
